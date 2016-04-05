@@ -1,0 +1,28 @@
+{
+    "rows": [
+    {
+        "title": "Formula 1",
+        "description": "f1",
+        "nsubs": 0,
+        "rules": "Reglas"
+    },
+    {
+        "title": "Football",
+        "description": "Football",
+        "nsubs": 0,
+        "rules": "Reglas"
+    },
+    {
+        "title": "World News",
+        "description": "World news",
+        "nsubs": 0,
+        "rules": "Reglas"
+    },
+    {
+        "title": "Web Dev",
+        "description": "Web development",
+        "nsubs": 0,
+        "rules": "Reglas"
+    }
+    ]
+}

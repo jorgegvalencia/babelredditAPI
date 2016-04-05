@@ -13,7 +13,10 @@
 	_id: String, // id del post
 	topic: String, // id del topic al que pertenece
 	title: String, // título del post
-	author: String, // id del usuario que ha creado el post
+	author: {
+		_id: String, // id del usuario que ha creado el post
+		username: String, // nombre del usuario que ha creado el post
+	}
 	creation_date: String, // string en formato ISO de la fecha de creación
 	last_edit_date: String, // string en formato ISO de la última fecha de creación
 	upvotes: [String], // id de usuarios que han votado positivamente
@@ -27,12 +30,16 @@
 {
 	_id: String, // id del comentario
 	post: String, // id del post al que pertenece
-	userid: String, // id del usuario
-	username: String, // nombre del usuario
+	author: {
+		_id: String, // id del usuario que ha creado el comentario
+		username: String, // nombre del usuario que ha creado el comentario
+	}
+	creation_date: String, // string en formato ISO de la fecha de creación
+	last_edit_date: String, // string en formato ISO de la última fecha de creación
 	text: String, // texto del comentario
 	upvotes: [String], // id de usuarios que han votado positivamente
 	downvotes: [String], // id de usuarios que han votado negativamente
-	reference: String, // id del comentario respuesta (si es el id del propio comentario es referente al post)
+	reference: String, // id del comentario respuesta (si es null es referente al post)
 }
 
 // Users
