@@ -2,24 +2,28 @@
     "rows": [
     {
         "title": "Formula 1",
+        "abrev": "formula1", 
         "description": "f1",
         "nsubs": 0,
         "rules": "Reglas"
     },
     {
         "title": "Football",
+        "abrev": "football", 
         "description": "Football",
         "nsubs": 0,
         "rules": "Reglas"
     },
     {
         "title": "World News",
+        "abrev": "worldnews",
         "description": "World news",
         "nsubs": 0,
         "rules": "Reglas"
     },
     {
         "title": "Web Dev",
+        "abrev": "webdev",
         "description": "Web development",
         "nsubs": 0,
         "rules": "Reglas"

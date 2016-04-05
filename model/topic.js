@@ -7,10 +7,11 @@ var conn = require('../lib/dbmanager');
 
 var topicSchema = mongoose.Schema({
   title: { type: String, required: true, unique: true },
+  abrev: { type: String, required: true, unique: true },
   description: { type: String, required: true },
   nsubs: {type: Number },
   rules: {type: String },
-  category: {type: String, default: 'N/A' }
+  category: {type: String, default: null }
 });
 
 var Topic = mongoose.model('topic', topicSchema);

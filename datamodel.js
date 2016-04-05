@@ -2,6 +2,7 @@
 {
 	_id: String, // id del topic
 	title: String, // título del topic
+	abrev: String, // abreviacion del topic para la URL
 	description: String, // descripción del topic
 	nsubs: Integer, // número de suscriptores (?)
 	rules: String, // texto con las reglas del topic
@@ -24,6 +25,7 @@
 	description: String, // descripcion inicial (opcional) del post
 	link: String, // String de una URL externa, o uri del propio post
 	thumbnail: String, // uri local del fichero de la imagen (**)
+	ncomments: Number // numero de comentarios
 }
 
 // Comment
