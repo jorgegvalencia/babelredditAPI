@@ -10,6 +10,4 @@ router.get('/', function(req, res, next) {
   // acceder a la base de datos y devolver el json
 });
 
-router.use('/posts', posts);
-
 module.exports = router;

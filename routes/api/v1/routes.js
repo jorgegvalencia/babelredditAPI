@@ -1,14 +1,26 @@
 var express = require('express');
 var router = express.Router();
-var auth = require('../../../lib/authenticator');
 
 // children routers
 var topics = require('./topics');
 var users = require('./users');
 
+// utils
+var session = require('../../../lib/session');
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Express' });
+});
+
+/**
+@api {POST} /register Registro de un usuario
+@apiParam  String username Nombre de usuario
+@apiParam  String password Contraseña de usuario
+@apiParam  String email Email del usuario
+*/
+router.post('/register', function (req, res) {
+    session.register(req, res);
 });
 
 /**
@@ -17,26 +29,12 @@ router.get('/', function(req, res, next) {
  * @apiParam  String password Contraseña del usuario
  */
 router.post('/login', function(req, res) {
-    var user = req.body.username;
-    var pass = req.body.password;
-    // comprobar credenciales
-    // si OK
-    	// establecer las cookies
-    	res.cookie('user', user);
-    	res.cookie('pass', pass);
-    	// devolver 200 OK
-		res.status(200).json({ user: user });
-	// si no
-		// devolver 401 Unauthorized
-		res.status(401).send();
+    session.login(req, res);
 });
 
-router.post('/logout', function(req, res) {
-	console.log(req.cookies);
-    res.clearCookie('user');
-    res.clearCookie('pass');
-    res.status(200).send();
-})
+router.delete('/logout', function(req, res) {
+    session.logout(req, res);
+});
 
 router.use('/topics', topics);
 router.use('/users', users);
