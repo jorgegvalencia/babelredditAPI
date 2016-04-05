@@ -19,6 +19,7 @@ router.get('/', function (req, res) {
 */
 router.post('/', auth(), function (req, res) { // cambiar auth() por admin()
 	// body...
+	res.status(200).json({result: "nuevo topic insertado"});
 });
 
 /**
