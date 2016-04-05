@@ -12,6 +12,10 @@ router.get('/', function (req, res) {
 
 /**
 * @api {POST} /topics Crear un nuevo topic
+* @apiParam String title título del topic
+* @apiParam String description descripción del topic
+* @apiParam String rules texto con las reglas del topic
+* @apiParam String category id de la categoria del topic, seleccionada de un listado inicial
 */
 router.post('/', auth(), function (req, res) { // cambiar auth() por admin()
 	// body...
@@ -26,6 +30,10 @@ router.get('/:topicid', function (req, res) {
 
 /**
 * @api {POST} /topics/:topicid Editar los datos de un topic
+* @apiParam String title título del topic
+* @apiParam String description descripción del topic
+* @apiParam String rules texto con las reglas del topic
+* @apiParam String category id de la categoria del topic, seleccionada de un listado inicial
 */
 router.put('/:topicid', auth(), function (req, res) { // cambiar auth() por admin()
 	// body...
