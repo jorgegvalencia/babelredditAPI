@@ -1,6 +1,10 @@
 # babelredditAPI
 API to serve the babelreddit webapp. requests
 
+## /login
+```
+POST: Loguea al usuario con su nombre de usuario y contraseña 
+```
 ## /topics
 ```
 GET: Devuelve la lista de topics
