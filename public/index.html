@@ -2,14 +2,31 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Hola mundo</title>
+    <title>BabelReddit</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="dist/style.css">
 </head>
 
 <body>
     <div ng-include="'views/navbar.html'"></div>
-    <h1>Hola Mundo!</h1>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h1>Formula 1</h1>
+                    <p><small><span class="badge badge-success">101,396</span></small>&nbspSuscriptores</p>
+                    <p>Actualidad y últimas noticias sobre la formula 1</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container-fluid dark">
+            <section id="content">
+                <div ng-include="'views/topic.html'"></div>
+            </section>
+        </div>
+    </main>
     <script src="dist/app.js"></script>
 </body>
 
