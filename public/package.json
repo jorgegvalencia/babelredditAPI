@@ -1,0 +1,29 @@
+{
+  "name": "babelreddit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jorgegvalencia/babelreddit.git"
+  },
+  "author": "jorgegvalencia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jorgegvalencia/babelreddit/issues"
+  },
+  "homepage": "https://github.com/jorgegvalencia/babelreddit#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-less": "^1.2.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-ng-annotate": "^2.0.1",
+    "grunt-string-replace": "^1.2.1",
+    "ng-annotate": "^1.2.1"
+  }
+}

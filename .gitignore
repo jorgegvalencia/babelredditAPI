@@ -1,2 +1,8 @@
 # Node modules
 node_modules/
+
+# Bower components
+bower_components/
+
+# dist
+dist/
