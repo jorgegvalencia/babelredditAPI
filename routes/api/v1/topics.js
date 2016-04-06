@@ -45,9 +45,9 @@ router.post('/', auth(), function(req, res) { // cambiar auth() por admin()
  */
 router.get('/:topicid', function(req, res) {
     var topicid = req.params.topicid;
-    var alphanumeric = /((^[0-9]+[a-z]+)|(^[a-z]+[0-9]+))+[0-9a-z]+$/i;
+    var alphanumeric = /((^[0-9]+[a-z]+)|(^[a-z]+[0-9]+))+[0-9a-z]+$/;
     if (alphanumeric.test(topicid)) {
-        Topic.find({ _id: topicid }, function(err, topic) {
+        Topic.find({ abrev: topicid }, function(err, topic) {
             if (err) {
                 return res.status(500).json({ error: err });
             }

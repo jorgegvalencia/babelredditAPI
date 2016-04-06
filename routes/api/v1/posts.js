@@ -3,6 +3,7 @@ var router = express.Router({ mergeParams: true });
 var comments = require('./comments');
 var auth = require('../../../lib/authenticator');
 var async = require('async');
+var validate = require('../../../lib/validate');
 
 var mongoose = require('mongoose');
 require('../../../model/post');
@@ -46,11 +47,58 @@ router.get('/', function(req, res) {
  * @apiParam String thumbnail uri local del fichero de la imagen (**)
  */
 router.post('/', auth(), function(req, res) {
-    // body...
+    var params = {
+        topic: req.params.topicid,
+        title: req.body.title,
+        author: {
+            _id: req.body.author._id,
+            username: req.body.author.username
+        },
+        creation_date: Date(),
+        description: req.body.description || null,
+        link: req.body.link,
+        thumbnail: req.body.thumbnail
+    };
+
+    var post = new Post(params);
+    post.save(post, function(err, postdata) {
+        if (err) {
+            return res.status(500).json({ error: err });
+        }
+        var newpost = {
+            _id: postdata._id,
+            title: postdata.title,
+            author: postdata.author,
+            creation_date: postdata.creation_date,
+            votes: (postdata.upvotes.length - postdata.downvotes.length),
+            link: postdata.link,
+            thumbnail: postdata.thumbnail,
+            ncomments: postdata.ncomments
+        }
+        res.status(201).json({ post: newpost });
+    });
 });
 
 router.get('/:postid', function(req, res) {
-    // body...
+    Post.findOne({ topic: req.params.topicid, _id: req.params.postid }, function(err, postdata) {
+        if (err) {
+            return res.status(500).json({ error: err });
+        }
+        if (postdata !== null) {
+            var post = {
+                _id: postdata._id,
+                title: postdata.title,
+                author: postdata.author,
+                creation_date: postdata.creation_date,
+                votes: (postdata.upvotes.length - postdata.downvotes.length),
+                link: postdata.link,
+                thumbnail: postdata.thumbnail,
+                ncomments: postdata.ncomments
+            };
+            return res.status(200).json({ post: post });
+        }
+        res.status(200).json({ post: null });
+    })
 });
 
 /**
@@ -59,14 +107,57 @@ router.get('/:postid', function(req, res) {
  * @apiParam String author._id id del usuario que ha creado el post
  * @apiParam String author.username nombre del usuario que ha creado el post
  * @apiParam String description descripcion inicial (opcional) del post
- * @apiParam String link String de una URL externa o uri del propio post
- * @apiParam String thumbnail uri local del fichero de la imagen (**)
  */
 router.put('/:postid', auth(), function(req, res) {
-    // body...
-    // si usuario logueado coincide con autor del post
-    // modificar
-    // sino, mandar forbidden
+    Post.findOne({ '_id': req.params.postid }, function(err, postdata) {
+        if (err) {
+            return res.status(500).json({ error: err });
+        }
+        if (postdata === null) {
+            // el post no existe
+            return res.status(422).json({ error: "post does not exist" });
+        }
+        // si usuario logueado coincide con autor del post
+        console.log("Cookie username", req.cookies.user || "");
+        console.log("Autor username", postdata.author.username || "");
+        if (req.cookies.user === postdata.author.username) {
+            var fields = {
+                last_edit_date: Date(),
+            };
+            if (req.body.hasOwnProperty("description")) {
+                fields.description = req.body.description;
+            }
+            console.log("Fields", fields);
+            // modificar
+            var options = {
+                new: true
+            }
+            Post.findOneAndUpdate({ _id: req.params.postid }, { $set: fields }, options, function(err, editedpostdata) {
+                if (err) {
+                    return res.status(500).json({ error: err });
+                }
+                var editedpost = {
+                        _id: editedpostdata._id,
+                        title: editedpostdata.title,
+                        author: editedpostdata.author,
+                        creation_date: editedpostdata.creation_date,
+                        last_edit_date: editedpostdata.last_edit_date,
+                        description: editedpostdata.description || null,
+                        votes: (editedpostdata.upvotes.length - editedpostdata.downvotes.length),
+                        link: editedpostdata.link,
+                        thumbnail: editedpostdata.thumbnail,
+                        ncomments: editedpostdata.ncomments
+                    }
+                    // editado correctamente
+                return res.status(200).json({ post: editedpost });
+            })
+        } else {
+            // el usuario logueado no es el autor del post -> mandar forbidden        
+            res.status(403).json({ error: "you are not the author of this post" });
+        }
+
+    })
+
 });
 
 router.use('/:postid/comments', comments);
