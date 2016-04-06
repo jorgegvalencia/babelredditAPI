@@ -26,12 +26,12 @@ function setDatabaseTopics() {
                     function(item, next) {
                         var topic = new Topic(item);
                         topic.save(function(err) {
-                            console.log("saved");
+                            console.log("Topic saved");
                             next();
                         });
                     },
                     function end(err) {
-                        mongoose.connection.close();
+                        //mongoose.connection.close();
                     }
                 );
             }
@@ -55,7 +55,7 @@ function setDatabasePosts() {
                     function(item, next) {
                         var post = new Post(item);
                         post.save(function(err) {
-                            console.log("saved");
+                            console.log("Post saved");
                             next();
                         });
                     },
@@ -68,5 +68,5 @@ function setDatabasePosts() {
     });
 }
 
-//setDatabaseTopics();
+setDatabaseTopics();
 setDatabasePosts();
