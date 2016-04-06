@@ -9,9 +9,9 @@ module.exports = function(grunt) {
             app: {
                 files: [{
                     expand: true,
-                    cwd: 'src/',
+                    cwd: 'public/src/',
                     src: ['**/*.js'],
-                    dest: 'dist/'
+                    dest: 'public/dist/'
                 }]
             }
         },
@@ -26,9 +26,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'dist/',
-                    src: '**/*.js',
-                    dest: 'dist/'
+                    cwd: 'public/dist/',
+                    src: 'public/**/*.js',
+                    dest: 'public/dist/'
                 }]
             }
         },
@@ -49,10 +49,10 @@ module.exports = function(grunt) {
                     'bower_components/angular-sanitize/angular-sanitize.js',
                     'bower_components/jquery/dist/jquery.js',
                     'bower_components/bootstrap/dist/js/bootstrap.js',
-                    'dist/**/*.js',
-                    'dist/*.js'
+                    'public/dist/**/*.js',
+                    'public/dist/*.js'
                 ],
-                dest: 'dist/app.js'
+                dest: 'public/dist/app.js'
             },
             dev: {
                 src: [
@@ -62,10 +62,10 @@ module.exports = function(grunt) {
                     'bower_components/angular-sanitize/angular-sanitize.js',
                     'bower_components/jquery/dist/jquery.js',
                     'bower_components/bootstrap/dist/js/bootstrap.js',
-                    'src/**/*.js',
-                    'src/*.js'
+                    'public/src/**/*.js',
+                    'public/src/*.js'
                 ],
-                dest: 'dist/app.js'
+                dest: 'public/dist/app.js'
             }
         },
 
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
             },
             built: {
                 files: {
-                    'dist/app.min.js': ['dist/app.js']
+                    'public/dist/app.min.js': ['public/dist/app.js']
                 }
             }
         },
@@ -83,18 +83,18 @@ module.exports = function(grunt) {
         less: {
             build: {
                 files: {
-                    "dist/style.css": "less/style.less",
+                    "public/dist/style.css": "public/less/style.less",
                 }
             }
         },
 
         watch: {
             js: {
-                files: ['src/**/*.js', 'src/*.js'],
+                files: ['public/src/**/*.js', 'public/src/*.js'],
                 tasks: ['concat:dev']
             },
             less: {
-                files: ['less/**.less'],
+                files: ['public/less/**.less'],
                 tasks: ['less']
             }
         }

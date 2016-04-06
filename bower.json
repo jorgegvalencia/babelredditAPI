@@ -8,5 +8,11 @@
   "license": "ISC",
   "homepage": "https://github.com/jorgegvalencia/babelreddit",
   "moduleType": [],
-  "private": true
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.3",
+    "angular-sanitize": "^1.5.3",
+    "angular-route": "^1.5.3",
+    "bootstrap": "^3.3.6"
+  }
 }
