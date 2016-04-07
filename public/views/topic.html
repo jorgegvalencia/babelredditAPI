@@ -1,6 +1,15 @@
-<div class="row">
-    <div ng-include="'views/sidebar.html'"></div>
-    <div ng-include="'views/postlist.html'"></div>
-    <div class="col-sm-2">
-    </div>
+<div class="background-wrapper">
+    <div ng-include="'views/navbar.html'"></div>
+    <header>
+        <!-- topic-header -->
+        <div ng-include="'views/header.html'"></div>
+    </header>
+    <main>
+        <div class="container-fluid dark">
+            <section id="content">
+                <!-- topic-content -->
+                <div ng-include="'views/topiccontent.html'"></div>
+            </section>
+        </div>
+    </main>
 </div>

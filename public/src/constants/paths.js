@@ -1,9 +1,11 @@
 angular.module("babelreddit").constant("paths", {
     root: "/",
-    home: "/home",
+    all: "/all",
     error: "/error",
-    movies: "/movies",
-    movie: "/movies/:id",
-    play: "/movies/:id/play",
-    newMovie: "/upload"
+    topics: "/topics",
+    topic: "/topics/:topicid",
+    posts: "/topics/:topicid/posts",
+    post: "/topics/:topicid/posts/:postid",
+    comments: "/topics/:topicid/posts/:postid/comments",
+    register: "/register"
 });
