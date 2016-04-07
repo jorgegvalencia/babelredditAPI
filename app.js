@@ -3,6 +3,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var expressSession = require('express-session');
 var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 
@@ -21,7 +22,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cookieSession({ secret: 'secret', cookie: {maxAge: 60 * 60 * 1000, httpOnly: true}}));
+app.use(expressSession({ name: 'session', secret: 'secret', cookie: {maxAge: 30 * 1000, httpOnly: true }}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/'+versionNumber, routes);

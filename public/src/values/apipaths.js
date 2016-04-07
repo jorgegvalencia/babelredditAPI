@@ -1,12 +1,12 @@
 angular.module("babelreddit").value("apipaths", {
-	login: "/login",
-	register: "/register",
-	logout: "/logout",
-	users: "/users",
-	user: "/users/:userid",
-	topics: "/topics",
-	topic: "/topic/:topicid",
-	posts: "/topic/:topidid/posts",
-	post: "/topic/:topicid/posts/:postid",
-	comments: "/topic/:topicid/posts/:postid/comments"
+	login: "/api/v1/login",
+	register: "/api/v1/register",
+	logout: "/api/v1/logout",
+	users: "/api/v1/users",
+	user: "/api/v1/users/:userid",
+	topics: "/api/v1/topics",
+	topic: "/api/v1/topic/:topicid",
+	posts: "/api/v1/topic/:topidid/posts",
+	post: "/api/v1/topic/:topicid/posts/:postid",
+	comments: "/api/v1/topic/:topicid/posts/:postid/comments"
 })

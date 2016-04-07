@@ -19,6 +19,7 @@ angular.module("babelreddit").service("APIclient", function($http, $q, Session, 
         $http.post(apipaths.login, credentials)
             .then(function(response) {
                 // Resolver la promesa
+                console.log("APIclient.login response:", response);
                 deferred.resolve(response.data); // Session.create(response._id, response.username);
             })
             .catch(function(response) {
@@ -59,6 +60,7 @@ angular.module("babelreddit").service("APIclient", function($http, $q, Session, 
         $http.delete(apipaths.logout)
             .then(function(response) {
                 // Resolver la promesa
+                console.log("APIclient.logout response:", response);
                 deferred.resolve(response.data); // Session.destroy
             })
             .catch(function(response) {

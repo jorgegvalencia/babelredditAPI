@@ -10,28 +10,28 @@
             <a class="navbar-brand" href="#">BabelReddit</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form id="signin" class="navbar-form navbar-right" role="form" ng-if="model.navbar.model.username==null">
+            <form id="signin" class="navbar-form navbar-right" role="form" ng-if="!isLogged()" ng-controller="LoginCtrl">
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                    <input id="email" type="email" class="form-control input-sm" name="email" value="" placeholder="Nombre de usuario">
+                    <input id="username" type="text" class="form-control input-sm" name="username" value="" placeholder="Nombre de usuario" ng-model="model.username">
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                    <input id="password" type="password" class="form-control input-sm" name="password" value="" placeholder="Contraseña">
+                    <input id="password" type="password" class="form-control input-sm" name="password" value="" placeholder="Contraseña" ng-model="model.password">
                 </div>
-                <button type="submit" class="btn btn-primary btn-sm">Login</button>
+                <button type="submit" class="btn btn-primary btn-sm" ng-click="login()">Login</button>
             </form>
-            <p class="navbar-text navbar-right hidden-sm" ng-if="model.navbar.model.username==null">
-                <span class="small">¿No tienes cuenta? Regístrate <a href="">aquí</a></span>
+            <p class="navbar-text navbar-right hidden-sm" ng-if="!isLogged()">
+                <span class="small">¿No tienes cuenta? Regístrate <a href="#/register">aquí</a></span>
             </p>
-            <ul class="nav navbar-nav navbar-right" ng-show="isLogged()">
+            <ul class="nav navbar-nav navbar-right" ng-show="isLogged()" ng-controller="NavbarUserCtrl">
                 <li class="dropdown">
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{::model.navbar.username}}&nbsp<span class="caret"></span></a>
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Logueado como: {{ model.currentuser }}&nbsp<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="#">Perfil</a></li>
                         <li><a href="#">Suscripciones</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Log out</a></li>
+                        <li><button ng-click="logout()">Log out</button></li>
                     </ul>
                 </li>
             </ul>

@@ -118,9 +118,9 @@ router.put('/:postid', auth(), function(req, res) {
             return res.status(422).json({ error: "post does not exist" });
         }
         // si usuario logueado coincide con autor del post
-        console.log("Cookie username", req.cookies.user || "");
+        console.log("Cookie username", req.session.user || "");
         console.log("Autor username", postdata.author.username || "");
-        if (req.cookies.user === postdata.author.username) {
+        if (req.session.user === postdata.author.username) {
             var fields = {
                 last_edit_date: Date(),
             };

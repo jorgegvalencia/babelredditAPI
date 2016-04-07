@@ -112,9 +112,9 @@ router.put('/:commentid', auth(), function(req, res) {
             return res.status(422).json({ error: "comment does not exist" });
         }
         // si usuario logueado coincide con autor del comentario
-        console.log("Cookie username", req.cookies.user || "");
+        console.log("Cookie username", req.session.user || "");
         console.log("Autor username", commentdata.author.username || "");
-        if (req.cookies.user === commentdata.author.username) {
+        if (req.session.user === commentdata.author.username) {
             var fields = {
                 last_edit_date: Date(),
             };

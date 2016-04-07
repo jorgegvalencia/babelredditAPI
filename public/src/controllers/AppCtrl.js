@@ -1,4 +1,4 @@
-angular.module("babelreddit").controller("AppCtrl", function($scope, $location, paths) {
+angular.module("babelreddit").controller("AppCtrl", function($scope, $location, Session, paths) {
     "ngInject";
 
     var controller = this;
@@ -21,9 +21,17 @@ angular.module("babelreddit").controller("AppCtrl", function($scope, $location, 
 
     $scope.$on("$changeTitle", function(evt, title) {
         $scope.model.title = title;
-    })
-
-    $scope.$watch($scope.model.currentuser, function(newValue, oldValue) {
-        $scope.$broadcast("$currentUser", newValue);
     });
+
+    $scope.$on("$currentUser", function() { //newValue, oldValue
+        console.log("Sesion", Session.username);
+        $scope.model.currentuser = Session.username;
+        console.log("Usuario cambiado. Enviando evento.")
+    });
+
+    $scope.$watch($scope.model.currentuser, function() { //newValue, oldValue
+        $scope.$broadcast("$currentUser");
+        console.log("Usuario cambiado. Enviando evento.")
+    });
+
 })

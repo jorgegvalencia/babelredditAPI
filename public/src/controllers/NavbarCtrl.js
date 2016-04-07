@@ -1,19 +1,19 @@
-angular.module("babelreddit").controller("NavbarCtrl", function ($scope, APIclient) {
+angular.module("babelreddit").controller("NavbarCtrl", function ($scope, APIclient, Session) {
 	"ngInject";
+
+	// formulario de login, mensaje de registro
+	// dropdown de usuario
 
 	//model init
 	$scope.model = {
-		username: null
+		currentuser: null
 	}
-
-
 
 	$scope.isLogged = function () {
-		// return APIclient.isAuthenticated();
-		return true;
+		return APIclient.isAuthenticated();
 	}
 
-	$scope.$on("$currentUser", function (evt, value) {
-		$scope.model.username = value;
-	})
+	$scope.$on("$currentUser", function () { //evt, value
+		$scope.model.currentuser = Session.username;
+	});
 })
