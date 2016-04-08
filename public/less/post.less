@@ -7,17 +7,39 @@
 .votes {
     float: left;
     padding-right: 10px;
-}
-
-.comment-panel {
-    textarea {
-        box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
-        resize: vertical;
-        max-width: 100%;
-        color: #222;
+    display: inline;
+    .upvote{
+        color: lightgreen;
+        &:hover{
+            color: darken(lightgreen, 20%);
+        }
+    }
+    .downvote{
+        color: tomato;
+        &:hover{
+            color: darken(tomato, 20%);
+        }
     }
 }
 
+.comment-panel {
+}
+
+textarea {
+        box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+        resize: vertical;
+        width: 500px; 
+        height: 100px;
+        max-width: 100%;
+        color: black;
+        background-color: #777;
+        font-size: 12px;
+    }
+
 button#send-comment {
     margin: 20px 0px;
+}
+
+.media.post {
+    color: #CCC;
 }

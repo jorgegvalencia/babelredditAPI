@@ -8,5 +8,5 @@ angular.module("babelreddit").value("apipaths", {
 	topic: "/api/v1/topics/:topicid",
 	posts: "/api/v1/topics/:topicid/posts",
 	post: "/api/v1/topics/:topicid/posts/:postid",
-	comments: "/api/v1/topic/:topicid/posts/:postid/comments"
+	comments: "/api/v1/topics/:topicid/posts/:postid/comments"
 })

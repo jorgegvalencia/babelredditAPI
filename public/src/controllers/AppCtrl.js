@@ -1,4 +1,4 @@
-angular.module("babelreddit").controller("AppCtrl", function($scope, $location, Session, Topic, paths) {
+angular.module("babelreddit").controller("AppCtrl", function($scope, $location, $anchorScroll, Session, Topic, paths) {
     "ngInject";
 
     var controller = this;
@@ -18,6 +18,7 @@ angular.module("babelreddit").controller("AppCtrl", function($scope, $location, 
         // console.log("Previous route:", prevRoute);
         $scope.model.webtitle = controller.titles[$location.path()] || "404 Not Found";
         Topic.setCurrentTopic();
+        $anchorScroll();
     });
 
     $scope.$on("$changeTitle", function(evt, title) {
