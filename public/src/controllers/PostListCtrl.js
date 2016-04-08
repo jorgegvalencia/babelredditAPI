@@ -11,7 +11,6 @@ angular.module("babelreddit").controller("PostListCtrl", function($scope, $locat
 
     APIclient.getPostList($scope.model.active)
         .then(function(response) {
-            console.log(response.posts);
             $scope.model.posts = response.posts;
         })
         .catch(function(response) {
