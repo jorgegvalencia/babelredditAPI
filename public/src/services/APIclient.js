@@ -8,6 +8,7 @@ angular.module("babelreddit").service("APIclient", function($http, $q, Session, 
     apiclient.register = register;
     apiclient.logout = logout;
     apiclient.getTopicList = getTopicList;
+    apiclient.getTopic = getTopic;
     apiclient.getPostList = getPostList;
     apiclient.getCommentList = getCommentList;
 
@@ -76,6 +77,24 @@ angular.module("babelreddit").service("APIclient", function($http, $q, Session, 
         var deferred = $q.defer();
         // Hacer trabajo asíncrono
         $http.get(apipaths.topics)
+            .then(function(response) {
+                // Resolver la promesa
+                deferred.resolve(response.data);
+            })
+            .catch(function(response) {
+                // Rechazar la promesa
+                deferred.reject(response.data);
+            });
+        // Devolver la promesa
+        return deferred.promise;
+    }
+
+    function getTopic(topicid) {
+        // Crear el objeto diferido
+        var deferred = $q.defer();
+        var requestURL = URL.resolve(apipaths.topic, {topicid: topicid});
+        // Hacer trabajo asíncrono
+        $http.get(requestURL)
             .then(function(response) {
                 // Resolver la promesa
                 deferred.resolve(response.data);

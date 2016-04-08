@@ -1,4 +1,4 @@
-<div class="col-sm-4 col-md-3 col-lg-2">
+<div class="col-sm-4 col-md-3 col-lg-2" ng-controller="SidebarCtrl">
     <h3 class="visible-lg visible-md visible-sm">Topics</h3>
     <div class="sidebar-nav">
         <div class="navbar navbar-default navbar-inverse" role="navigation">
@@ -13,32 +13,7 @@
             </div>
             <div class="navbar-collapse collapse sidebar-navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">formula1<span class="badge pull-right">101,396</span></a></li>
-                    <li><a href="#">football<span class="badge pull-right">24</span></a></li>
-                    <li><a href="#">worldnews<span class="badge pull-right">3</span></a></li>
-                    <li><a href="#">webdev<span class="badge pull-right">1,118</span></a></li>
-                    <li><a href="#">football<span class="badge pull-right">24</span></a></li>
-                    <li><a href="#">worldnews<span class="badge pull-right">3</span></a></li>
-                    <li><a href="#">webdev<span class="badge pull-right">1,118</span></a></li>
-                    <li><a href="#">football<span class="badge pull-right">24</span></a></li>
-                    <li><a href="#">worldnews<span class="badge pull-right">3</span></a></li>
-                    <li><a href="#">webdev<span class="badge pull-right">1,118</span></a></li><li><a href="#">football<span class="badge pull-right">24</span></a></li>
-                    <li><a href="#">worldnews<span class="badge pull-right">3</span></a></li>
-                    <li><a href="#">webdev<span class="badge pull-right">1,118</span></a></li>
-                    <li><a href="#">football<span class="badge pull-right">24</span></a></li>
-                    <li><a href="#">worldnews<span class="badge pull-right">3</span></a></li>
-                    <li><a href="#">webdev<span class="badge pull-right">1,118</span></a></li>
-                    <li><a href="#">football<span class="badge pull-right">24</span></a></li>
-                    <li><a href="#">worldnews<span class="badge pull-right">3</span></a></li>
-                    <li><a href="#">webdev<span class="badge pull-right">1,118</span></a></li><li><a href="#">football<span class="badge pull-right">24</span></a></li>
-                    <li><a href="#">worldnews<span class="badge pull-right">3</span></a></li>
-                    <li><a href="#">webdev<span class="badge pull-right">1,118</span></a></li>
-                    <li><a href="#">football<span class="badge pull-right">24</span></a></li>
-                    <li><a href="#">worldnews<span class="badge pull-right">3</span></a></li>
-                    <li><a href="#">webdev<span class="badge pull-right">1,118</span></a></li>
-                    <li><a href="#">football<span class="badge pull-right">24</span></a></li>
-                    <li><a href="#">worldnews<span class="badge pull-right">3</span></a></li>
-                    <li><a href="#">webdev<span class="badge pull-right">1,118</span></a></li>
+                    <sidebar-item ng-repeat="item in model.topics" item="item" ng-class="model.getClass({{'item.abrev'}})" get-topic-url="getTopicUrl(topic)"></sidebar-item>
                 </ul>
             </div>
             <!--/.nav-collapse -->

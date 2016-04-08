@@ -4,28 +4,28 @@
         "title": "Formula 1",
         "abrev": "formula1", 
         "description": "f1",
-        "nsubs": 0,
+        "nsubs": 1002,
         "rules": "Reglas"
     },
     {
         "title": "Football",
         "abrev": "football", 
         "description": "Football",
-        "nsubs": 0,
+        "nsubs": 1209312,
         "rules": "Reglas"
     },
     {
         "title": "World News",
         "abrev": "worldnews",
         "description": "World news",
-        "nsubs": 0,
+        "nsubs": 23123,
         "rules": "Reglas"
     },
     {
         "title": "Web Dev",
         "abrev": "webdev",
         "description": "Web development",
-        "nsubs": 0,
+        "nsubs": 12,
         "rules": "Reglas"
     }
     ]

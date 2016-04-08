@@ -1,6 +1,6 @@
 angular.module("babelreddit").constant("paths", {
     root: "/",
-    all: "/all",
+    all: "/topics/all",
     error: "/error",
     topics: "/topics",
     topic: "/topics/:topicid",
