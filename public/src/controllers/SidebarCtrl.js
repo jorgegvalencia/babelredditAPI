@@ -5,13 +5,13 @@ angular.module("babelreddit").controller("SidebarCtrl", function ($scope, $locat
 
 	$scope.model = {
 		currentTopic: Topic,
+		active: $location.path().split("/")[2] || "all",
 		topics: [],
 	}
 
 	$scope.model.getClass = function(topic){
-		var active = $scope.model.currentTopic.getCurrentTopic().abrev;
-		console.log("Active now: ", active);
-		if( topic == active){
+		// var active = $scope.model.currentTopic.getCurrentTopic().abrev || "";
+		if( topic == $scope.model.active){
 			return "active";
 		}
 		else {
@@ -25,7 +25,6 @@ angular.module("babelreddit").controller("SidebarCtrl", function ($scope, $locat
 
 	APIclient.getTopicList()
 		.then(function (response) {
-			console.log(response.topics);
 			$scope.model.topics = response.topics;
 		})
 		.catch(function (response) {

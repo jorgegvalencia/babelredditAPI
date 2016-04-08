@@ -5,5 +5,4 @@ angular.module("babelreddit").controller("HeaderCtrl", function ($scope, Topic, 
 		currentTopic: Topic
 	}
 
-	// APIclient.getTopic()
 })

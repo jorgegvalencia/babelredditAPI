@@ -1,47 +1,26 @@
 <div class="col-sm-8" ng-controller="PostListCtrl">
-    <h3>/formula1</h3>
-    <h4 ng-hide="'true'">Aún no hay ningún post. Sé el primero en crear uno</h4>
-    <ul class="media-list">
+    <h3>/{{model.currentTopic.topic.abrev}}</h3>
+    <h4 ng-show="model.posts.length==0">Aún no hay ningún post. Sé el primero en crear uno</h4>
+    <ul class="media-list" ng-repeat="item in model.posts">
         <li class="media post">
             <div class="votes">
-                <span>3272</span>
+                <span>{{::item.votes}}</span>
                 <br>
                 <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
                 <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
             </div>
             <div class="media-left">
                 <a href="#">
-                    <img class="media-object" src="http://motor.as.com/motor/imagenes/2016/04/03/formula_1/1459707103_213959_1459707210_noticia_grande.jpg" alt="..." width="64" height="64">
+                    <img class="media-object" ng-src="{{::item.thumbnail}}" alt="..." width="64" height="64">
                 </a>
             </div>
             <div class="media-body">
                 <h4 class="media-heading">
-                                        <a href="http://motor.as.com/motor/2016/04/03/formula_1/1459707103_213959.html">
-                                            Alonso se ha recuperado de su lesión de costilla y volverá a correr dentro de una semana.
+                                        <a ng-href="{{::getPostTitleUrl(item)}}">
+                                            {{::item.title }}
                                         </a>
                                     </h4>
-                <a href="">Comentarios&nbsp<span class="badge">75</span></a> Creado por: user1 Hace 18 min
-            </div>
-        </li>
-        <li class="media post">
-            <div class="votes">
-                <span>783</span>
-                <br>
-                <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
-            </div>
-            <div class="media-left">
-                <a href="#">
-                    <img class="media-object" src="http://motor.as.com/motor/imagenes/2016/04/03/formula_1/1459707103_213959_1459707210_noticia_grande.jpg" alt="..." width="64" height="64">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading">
-                                        <a href="http://motor.as.com/motor/2016/04/03/formula_1/1459707103_213959.html">
-                                            Alonso se ha recuperado de su lesión de costilla y volverá a correr dentro de una semana.
-                                        </a>
-                                    </h4>
-                <a href="">Comentarios&nbsp<span class="badge">75</span></a> Creado por: user1 Hace 18 min
+                <a ng-href="{{::getPostUrl(item)}}">Comentarios&nbsp<span class="badge">{{::item.ncomments}}</span></a> Creado por: {{::item.author.username }} Hace 18 min
             </div>
         </li>
     </ul>

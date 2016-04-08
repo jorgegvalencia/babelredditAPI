@@ -18,6 +18,7 @@ router.get('/', function(req, res) {
         async.eachSeries(posts, function(item, next) {
                 var post = {
                     _id: item._id,
+                    topic: item.topic,
                     title: item.title,
                     author: item.author,
                     creation_date: item.creation_date,
@@ -87,6 +88,7 @@ router.get('/:postid', function(req, res) {
         if (postdata !== null) {
             var post = {
                 _id: postdata._id,
+                topic: postdata.topic,
                 title: postdata.title,
                 author: postdata.author,
                 creation_date: postdata.creation_date,

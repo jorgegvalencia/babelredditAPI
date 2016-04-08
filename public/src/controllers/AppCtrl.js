@@ -14,8 +14,8 @@ angular.module("babelreddit").controller("AppCtrl", function($scope, $location, 
 
     // scope event listeners
     $scope.$on("$locationChangeSuccess", function(evt, currentRoute, prevRoute) {
-        console.log("Current route:", currentRoute);
-        console.log("Previous route:", prevRoute);
+        // console.log("Current route:", currentRoute);
+        // console.log("Previous route:", prevRoute);
         $scope.model.webtitle = controller.titles[$location.path()] || "404 Not Found";
     });
 
@@ -24,14 +24,11 @@ angular.module("babelreddit").controller("AppCtrl", function($scope, $location, 
     });
 
     $scope.$on("$currentUser", function() { //newValue, oldValue
-        console.log("Sesion", Session.username);
         $scope.model.currentuser = Session.username;
-        console.log("Usuario cambiado. Enviando evento.")
     });
 
     $scope.$watch($scope.model.currentuser, function() { //newValue, oldValue
         $scope.$broadcast("$currentUser");
-        console.log("Usuario cambiado. Enviando evento.")
     });
 
 })
