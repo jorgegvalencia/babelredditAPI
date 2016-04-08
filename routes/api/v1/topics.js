@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
         }
         var topiclist = [];
         async.eachSeries(topics, function(item, next) {
-                topiclist.push({ _id: item._id, title: item.title, nsubs: item.nsubs });
+                topiclist.push({ _id: item._id, title: item.title, nsubs: item.nsubs, abrev: item.abrev });
                 next();
             },
             function end(err) {
@@ -45,9 +45,9 @@ router.post('/', auth(), function(req, res) { // cambiar auth() por admin()
  */
 router.get('/:topicid', function(req, res) {
     var topicid = req.params.topicid;
-    var alphanumeric = /((^[0-9]+[a-z]+)|(^[a-z]+[0-9]+))+[0-9a-z]+$/;
+    var alphanumeric = /(^[a-z0-9]+)+[0-9a-z]+$/;
     if (alphanumeric.test(topicid)) {
-        Topic.find({ abrev: topicid }, function(err, topic) {
+        Topic.findOne({ abrev: topicid }, function(err, topic) {
             if (err) {
                 return res.status(500).json({ error: err });
             }
