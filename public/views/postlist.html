@@ -1,7 +1,8 @@
 <div class="col-sm-8" ng-controller="PostListCtrl">
     <h3>/{{model.currentTopic.topic.abrev}}</h3>
-    <h4 ng-show="model.posts.length==0">Aún no hay ningún post. Sé el primero en crear uno</h4>
+    <h4 ng-show="model.posts.length==0">Aún no hay ningún post. Sé el primero en <a href="#/topics/{{model.currentTopic.topic.abrev}}/posts/new">crear uno.</a></h4>
     <ul class="media-list" ng-repeat="item in model.posts">
+        <!-- Crear directiva postItem -->
         <li class="media post">
             <div class="votes">
                 <span>{{::item.votes}}</span>
@@ -14,14 +15,15 @@
                     <img class="media-object" ng-src="{{::item.thumbnail}}" alt="..." width="64" height="64">
                 </a>
             </div>
-            <div class="media-body">
+            <div class="media-body small">
                 <h4 class="media-heading">
                                         <a ng-href="{{::getPostTitleUrl(item)}}">
                                             {{::item.title }}
                                         </a>
                                     </h4>
-                <a ng-href="{{::getPostUrl(item)}}">Comentarios&nbsp<span class="badge">{{::item.ncomments}}</span></a> Creado por: {{::item.author.username }} Hace 18 min
+                <a ng-href="#{{::getPostUrl(item)}}">Comentarios&nbsp<span class="badge">{{::item.ncomments}}</span></a> Creado por: {{::item.author.username }} Hace 18 min
             </div>
         </li>
+        <!-- Crear directiva postItem -->
     </ul>
 </div>

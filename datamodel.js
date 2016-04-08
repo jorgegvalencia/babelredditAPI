@@ -7,6 +7,7 @@
 	nsubs: Integer, // número de suscriptores (?)
 	rules: String, // texto con las reglas del topic
 	category: String, // id de la categoria del topic, seleccionada de un listado inicial
+	cover: String
 }
 
 // Post

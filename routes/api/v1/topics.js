@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
         }
         var topiclist = [];
         async.eachSeries(topics, function(item, next) {
-                topiclist.push({ _id: item._id, title: item.title, nsubs: item.nsubs, abrev: item.abrev });
+                topiclist.push({ _id: item._id, title: item.title, nsubs: item.nsubs, abrev: item.abrev, cover: item.cover });
                 next();
             },
             function end(err) {

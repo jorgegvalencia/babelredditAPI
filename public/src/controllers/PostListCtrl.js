@@ -28,7 +28,7 @@ angular.module("babelreddit").controller("PostListCtrl", function($scope, $locat
         if (url !== "") {
             return url;
         } else {
-            return URL.resolve(paths.comments, { topicid: post.topic, postid: post._id });
+            return '#'+URL.resolve(paths.comments, { topicid: post.topic, postid: post._id });
         }
     }
 })

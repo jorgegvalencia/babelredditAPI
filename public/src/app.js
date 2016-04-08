@@ -1,6 +1,9 @@
 angular.module("babelreddit", ["ngRoute", "ngSanitize"])
     .config(["$routeProvider", "paths", function($routeProvider, paths) {
         $routeProvider
+            .when(paths.hash, {
+                redirectTo: paths.all
+            })
             .when(paths.root, {
                 redirectTo: paths.all
             })
@@ -23,6 +26,7 @@ angular.module("babelreddit", ["ngRoute", "ngSanitize"])
             	redirectTo: paths.comments
             })
             .when(paths.comments, {
+                controller: "PostCtrl",
             	templateUrl: "views/post.html"
             })
             .otherwise({

@@ -11,7 +11,8 @@ var topicSchema = mongoose.Schema({
   description: { type: String, required: true },
   nsubs: {type: Number },
   rules: {type: String },
-  category: {type: String, default: null }
+  category: {type: String, default: null },
+  cover: {type: String}
 });
 
 var Topic = mongoose.model('topic', topicSchema);

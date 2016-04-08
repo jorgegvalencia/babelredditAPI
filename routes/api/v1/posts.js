@@ -10,7 +10,12 @@ require('../../../model/post');
 var Post = mongoose.model('post');
 
 router.get('/', function(req, res) {
-    Post.find({ topic: req.params.topicid }, function(err, posts) {
+    var topic = {}
+    console.log(req.params.topicid);
+    if(req.params.topicid != "all"){
+        topic.topic = req.params.topicid;
+    }
+    Post.find(topic, function(err, posts) {
         if (err) {
             return res.status(500).json({ error: err });
         }

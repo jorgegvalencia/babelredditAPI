@@ -1,32 +1,44 @@
 {
     "rows": [
     {
+        "title": "All",
+        "abrev": "all", 
+        "description": "Bienvenido a BabelReddit",
+        "nsubs": 1002,
+        "rules": "Reglas",
+        "cover": "dist/covers/all.png"
+    },
+    {
         "title": "Formula 1",
         "abrev": "formula1", 
-        "description": "f1",
+        "description": "Comparte, interactúa y comenta las últimas noticias sobre el deporte rey del motor.",
         "nsubs": 1002,
-        "rules": "Reglas"
+        "rules": "Reglas",
+        "cover": "dist/covers/formula1.jpg"
     },
     {
         "title": "Football",
         "abrev": "football", 
         "description": "Football",
         "nsubs": 1209312,
-        "rules": "Reglas"
+        "rules": "Reglas",
+        "cover": "dist/covers/football.jpg"
     },
     {
         "title": "World News",
         "abrev": "worldnews",
         "description": "World news",
         "nsubs": 23123,
-        "rules": "Reglas"
+        "rules": "Reglas",
+        "cover": "dist/covers/worldnews.jpg"
     },
     {
         "title": "Web Dev",
         "abrev": "webdev",
         "description": "Web development",
         "nsubs": 12,
-        "rules": "Reglas"
+        "rules": "Reglas",
+        "cover": "dist/covers/webdev.jpg"
     }
     ]
 }
