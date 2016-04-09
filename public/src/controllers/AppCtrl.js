@@ -1,4 +1,4 @@
-angular.module("babelreddit").controller("AppCtrl", function($scope, $location, $anchorScroll, Session, Topic, paths) {
+angular.module("babelreddit").controller("AppCtrl", function($scope, $location, $anchorScroll, $routeParams, APIclient, Session, Topic, paths) {
     "ngInject";
 
     var controller = this;
@@ -9,7 +9,8 @@ angular.module("babelreddit").controller("AppCtrl", function($scope, $location, 
     //model init
     $scope.model = {
         webtitle: "BabelReddit",
-        currentuser: null
+        currentuser: null,
+        currentTopic: Topic
     }
 
     // scope event listeners
@@ -17,7 +18,8 @@ angular.module("babelreddit").controller("AppCtrl", function($scope, $location, 
         // console.log("Current route:", currentRoute);
         // console.log("Previous route:", prevRoute);
         $scope.model.webtitle = controller.titles[$location.path()] || "404 Not Found";
-        Topic.setCurrentTopic();
+        //getTopicData();
+        autologin();
         $anchorScroll();
     });
 
@@ -32,5 +34,33 @@ angular.module("babelreddit").controller("AppCtrl", function($scope, $location, 
     $scope.$watch($scope.model.currentuser, function() { //newValue, oldValue
         $scope.$broadcast("$currentUser");
     });
+
+    function getTopicData() {
+        APIclient.getTopic("all")
+            .then(function(response) {
+                console.log("AppCtrl", "setting current topic.");
+                Topic.setCurrentTopic(response.topic);
+                console.log("AppCtrl", Topic.topic);
+            })
+            .catch(function(response) {
+                console.log(response);
+            })
+    }
+
+    function autologin() {
+        if (localStorage.getItem('user') !== null) {
+            APIclient.login({ username: localStorage.getItem('user') })
+                .then(function(response) {
+                    Session.create(response._id, response.username);
+                    $scope.$emit("$currentUser");
+                })
+                .catch(function(response) {
+                    localStorage.removeItem('user');
+                })
+        }
+    }
+
+    // getTopicData();
+    autologin();
 
 })

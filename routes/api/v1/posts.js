@@ -28,7 +28,9 @@ router.get('/', function(req, res) {
                     author: item.author,
                     creation_date: item.creation_date,
                     votes: (item.upvotes.length - item.downvotes.length),
+                    description: item.description,
                     link: item.link,
+                    creation_date: item.creation_date,
                     thumbnail: item.thumbnail,
                     ncomments: item.ncomments
                 }
@@ -54,17 +56,19 @@ router.get('/', function(req, res) {
  */
 router.post('/', auth(), function(req, res) {
     var params = {
-        topic: req.params.topicid,
-        title: req.body.title,
+        topic: req.params.topicid, // required
+        title: req.body.title, // required
         author: {
-            _id: req.body.author._id,
-            username: req.body.author.username
+            _id: req.body.author._id, // required
+            username: req.body.author.username // required
         },
-        creation_date: Date(),
+        creation_date: new Date().toISOString(),
         description: req.body.description || null,
-        link: req.body.link,
-        thumbnail: req.body.thumbnail
+        link: req.body.link || undefined,
+        thumbnail: req.body.thumbnail || undefined
     };
+
+    console.log(params);
 
     var post = new Post(params);
     post.save(post, function(err, postdata) {
@@ -99,6 +103,8 @@ router.get('/:postid', function(req, res) {
                 creation_date: postdata.creation_date,
                 votes: (postdata.upvotes.length - postdata.downvotes.length),
                 link: postdata.link,
+                description: postdata.description,
+                creation_date: postdata.creation_date,
                 thumbnail: postdata.thumbnail,
                 ncomments: postdata.ncomments
             };
@@ -129,7 +135,7 @@ router.put('/:postid', auth(), function(req, res) {
         console.log("Autor username", postdata.author.username || "");
         if (req.session.user === postdata.author.username) {
             var fields = {
-                last_edit_date: Date(),
+                last_edit_date: new Date().toISOString(),
             };
             if (req.body.hasOwnProperty("description")) {
                 fields.description = req.body.description;

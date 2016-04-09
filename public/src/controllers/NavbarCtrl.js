@@ -6,7 +6,7 @@ angular.module("babelreddit").controller("NavbarCtrl", function ($scope, APIclie
 
 	//model init
 	$scope.model = {
-		currentuser: null
+		currentuser: Session.username
 	}
 
 	$scope.isLogged = function () {

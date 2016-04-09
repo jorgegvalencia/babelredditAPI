@@ -17,6 +17,11 @@ angular.module("babelreddit").controller("PostListCtrl", function($scope, $locat
             console.log(response);
         })
 
+    $scope.isLogged = function () {
+        return APIclient.isAuthenticated();
+    }
+
+
     $scope.getPostUrl = function(post) {
         var posturl = URL.resolve(paths.comments, { topicid: post.topic, postid: post._id });
         return posturl;

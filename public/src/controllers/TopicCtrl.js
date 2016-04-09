@@ -1,20 +1,13 @@
-angular.module("babelreddit").controller("TopicCtrl", function($scope, $location, APIclient, Topic) {
+angular.module("babelreddit").controller("TopicCtrl", function($scope, $location, $routeParams, APIclient, Topic) {
+    "ngInject";
 
     $scope.model = {
         currentTopic: Topic
     }
 
-    var locationTopic = $location.path().split("/")[2] || "all";
+    // var locationTopic = $location.path().split("/")[2] || "all";
 
-    function getTopicData() {
-        APIclient.getTopic(locationTopic)
-            .then(function(response) {
-                Topic.setCurrentTopic(response.topic);
-            })
-            .catch(function(response) {
-                console.log(response);
-            })
-    }
+    console.log("TopicCtrl topicid:", $routeParams);
 
-    getTopicData();
+    Topic.getTopicData($routeParams.topicid || "all");
 })

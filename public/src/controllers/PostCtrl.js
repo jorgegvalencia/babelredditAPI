@@ -6,10 +6,25 @@ angular.module("babelreddit").controller("PostCtrl", function ($scope, $routePar
 		currentTopic: Topic
 	};
 
+	$scope.post = {};
+
 	var topicid = $routeParams.topicid;
 	var postid =  $routeParams.postid;
-	console.log(topicid);
-	console.log(postid);
+
+	console.log("PostCtrl params:", $routeParams);
+
+	$scope.isLogged = function () {
+		return APIclient.isAuthenticated();
+	}
+
+	APIclient.getPost($routeParams.topicid, $routeParams.postid)
+		.then(function (response) {
+			console.log(response);
+			$scope.post = response.post;
+		})
+		.catch(function (response) {
+			console.log(response);
+		})
 
 	APIclient.getCommentList($routeParams.topicid, $routeParams.postid)
 		.then(function (response) {
@@ -19,16 +34,5 @@ angular.module("babelreddit").controller("PostCtrl", function ($scope, $routePar
 			console.log(response);
 		})
 
-	// mover a un sitio compartido
-	function getTopicData() {
-        APIclient.getTopic(topicid)
-            .then(function(response) {
-                Topic.setCurrentTopic(response.topic);
-            })
-            .catch(function(response) {
-                console.log(response);
-            })
-    }
-
-    getTopicData();
+	Topic.getTopicData($routeParams.topicid);
 })

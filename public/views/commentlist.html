@@ -1,13 +1,14 @@
 <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
-    <h3>Comentarios</h3>
-    <div class="row" ng-if="logged()">
+    <div class="row" ng-if="isLogged()">
+        <hr>
         <div class="col-xs-12">
-            <div class="comment-panel">
-                <textarea name="" id="" rows="10" cols="200"></textarea>
+            <div>
+                <textarea class="form-control" name="" id="" rows="10" cols="100"></textarea>
             </div>
             <button id="send-comment" class="btn btn-default pull-left">Enviar comentario</button>
         </div>
     </div>
+    <h3>Comentarios</h3>
     <hr>
     <div class="media-list">
         <div class="media post">
@@ -21,6 +22,20 @@
                 <p class="media-heading">user1&nbsp<span class="small">Hace 18 min</span></p>
                 <div class="comment">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo enim, tempora dicta fugit, deserunt aperiam? Aliquid explicabo placeat debitis. Voluptatum doloremque odio quia neque incidunt fugiat dolorum sapiente voluptates. Veniam ullam sed laboriosam a libero minus dignissimos nisi reprehenderit quasi dolores repellat sint distinctio tempora, provident, et expedita earum officiis quia animi vitae enim quisquam obcaecati ab. Sed obcaecati esse voluptatum reiciendis nemo, dolore rerum a consequuntur quod, laborum ad, non beatae est inventore dolorum porro nulla id exercitationem corporis culpa. Earum, consequatur, dignissimos. Natus, provident! Reiciendis perferendis qui temporibus dolore recusandae, ea, repellendus culpa perspiciatis voluptate blanditiis optio laudantium.
+                </div>
+                <br>
+                <p class="commands">
+                    <a class="small">Contestar</a>
+                </p>
+                <div class="row">
+                    <!-- ng-if="logged()" -->
+                    <div class="col-xs-12">
+                        <div>
+                            <textarea class="form-control" name="" id="" rows="5" cols="1"></textarea>
+                        </div>
+                        <button id="send-comment" class="btn btn-default btn-sm">Enviar comentario</button>
+                        <button id="send-comment" class="btn btn-default btn-sm">Cancelar</button>
+                    </div>
                 </div>
                 <div class="media post">
                     <div class="votes">
@@ -56,8 +71,8 @@
             <div class="votes">
                 <span>3272</span>
                 <br>
-                <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
+                <a class="upvote"><i class="glyphicon glyphicon-thumbs-up"></i></a>
+                <a class="downvote"><i class="glyphicon glyphicon-thumbs-down"></i></a>
             </div>
             <div class="media-body">
                 <p class="media-heading">user1&nbsp<span class="small">Hace 18 min</span></p>

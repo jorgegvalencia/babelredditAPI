@@ -25,6 +25,12 @@ angular.module("babelreddit", ["ngRoute", "ngSanitize"])
             .when(paths.post, {
             	redirectTo: paths.comments
             })
+            .when('/topics/all/newpost', {
+                redirectTo: paths.error
+            })
+            .when(paths.newpost, {
+                templateUrl: "views/newpost.html"
+            })
             .when(paths.comments, {
                 controller: "PostCtrl",
             	templateUrl: "views/post.html"

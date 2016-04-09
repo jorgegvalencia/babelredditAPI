@@ -10,7 +10,10 @@ angular.module("babelreddit").service("APIclient", function($http, $q, Session, 
     apiclient.getTopicList = getTopicList;
     apiclient.getTopic = getTopic;
     apiclient.getPostList = getPostList;
+    apiclient.getPost = getPost;
     apiclient.getCommentList = getCommentList;
+    apiclient.createPost = createPost;
+    apiclient.createComment = createComment;
 
     function login(credentials) {
         // Crear el objeto diferido
@@ -92,7 +95,7 @@ angular.module("babelreddit").service("APIclient", function($http, $q, Session, 
     function getTopic(topicid) {
         // Crear el objeto diferido
         var deferred = $q.defer();
-        var requestURL = URL.resolve(apipaths.topic, {topicid: topicid});
+        var requestURL = URL.resolve(apipaths.topic, { topicid: topicid });
         // Hacer trabajo asíncrono
         $http.get(requestURL)
             .then(function(response) {
@@ -110,7 +113,25 @@ angular.module("babelreddit").service("APIclient", function($http, $q, Session, 
     function getPostList(topicid) {
         // Crear el objeto diferido
         var deferred = $q.defer();
-        var requestURL = URL.resolve(apipaths.posts, {topicid: topicid});
+        var requestURL = URL.resolve(apipaths.posts, { topicid: topicid });
+        // Hacer trabajo asíncrono
+        $http.get(requestURL)
+            .then(function(response) {
+                // Resolver la promesa
+                deferred.resolve(response.data);
+            })
+            .catch(function(response) {
+                // Rechazar la promesa
+                deferred.reject(response.data);
+            });
+        // Devolver la promesa
+        return deferred.promise;
+    }
+
+    function getPost(topicid, postid) {
+        // Crear el objeto diferido
+        var deferred = $q.defer();
+        var requestURL = URL.resolve(apipaths.post, { topicid: topicid, postid: postid });
         // Hacer trabajo asíncrono
         $http.get(requestURL)
             .then(function(response) {
@@ -128,9 +149,43 @@ angular.module("babelreddit").service("APIclient", function($http, $q, Session, 
     function getCommentList(topicid, postid) {
         // Crear el objeto diferido
         var deferred = $q.defer();
-        var requestURL = URL.resolve(apipaths.comments, {topicid: topicid, postid: postid});
+        var requestURL = URL.resolve(apipaths.comments, { topicid: topicid, postid: postid });
         // Hacer trabajo asíncrono
         $http.get(requestURL)
+            .then(function(response) {
+                // Resolver la promesa
+                deferred.resolve(response.data);
+            })
+            .catch(function(response) {
+                // Rechazar la promesa
+                deferred.reject(response.data);
+            });
+        // Devolver la promesa
+        return deferred.promise;
+    }
+
+    function createPost(topicid, post) {
+        var deferred = $q.defer();
+        var requestURL = URL.resolve(apipaths.posts, { topicid: topicid });
+        // Hacer trabajo asíncrono
+        $http.post(requestURL, post)
+            .then(function(response) {
+                // Resolver la promesa
+                deferred.resolve(response.data);
+            })
+            .catch(function(response) {
+                // Rechazar la promesa
+                deferred.reject(response.data);
+            });
+        // Devolver la promesa
+        return deferred.promise;
+    }
+
+    function createComment(topicid, postid, comment) {
+        var deferred = $q.defer();
+        var requestURL = URL.resolve(apipaths.comments, { topicid: topicid, postid: postid });
+        // Hacer trabajo asíncrono
+        $http.post(requestURL, comment)
             .then(function(response) {
                 // Resolver la promesa
                 deferred.resolve(response.data);

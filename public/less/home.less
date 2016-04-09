@@ -1,15 +1,22 @@
 header {
-	color: #FFF;
-	min-height: 200px;
+    color: #FFF;
+    min-height: 200px;
     text-shadow: 1px 2px 3px #222;
-}
-
-body{
-    background-color: #525252;
-
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         text-shadow: 1px 2px 3px #222;
     }
+    & a {
+                color: #FFF;
+    }
+}
+
+body {
+    background-color: #525252;
 }
 
 .background-wrapper {
@@ -22,22 +29,23 @@ body{
     // opacity: 0.90;
 }
 
-.container.dark, .container-fluid.dark{
-	background-color: #222222;
+.container.dark,
+.container-fluid.dark {
+    background-color: #222222;
     border-color: #080808;
     opacity: 0.98;
     color: #FFF;
 }
 
 #content {
-	padding: 25px 0px 70px 0px;
-	text-align: justify;
+    padding: 25px 0px 70px 0px;
+    // text-align: justify;
 }
 
-a:hover{
-	text-decoration: none !important;
+a:hover {
+    text-decoration: none !important;
 }
 
 .badge-success {
-	background-color: darken(lightgreen, 15%);
+    background-color: darken(lightgreen, 15%);
 }

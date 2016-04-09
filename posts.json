@@ -19,8 +19,7 @@
             "username": "user3"
         },
         "description": "Alonso se ha recuperado de su lesión de costilla y volverá a correr dentro de una semana.",
-        "link": "http://motor.as.com/motor/2016/04/03/formula_1/1459707103_213959.html",
-        "thumbnail": "http://motor.as.com/motor/imagenes/2016/04/03/formula_1/1459707103_213959_1459707210_noticia_grande.jpg"
+        "link": "http://motor.as.com/motor/2016/04/03/formula_1/1459707103_213959.html"
     },
     {
         "topic": "formula1",
@@ -131,8 +130,7 @@
             "_id": "5704b7cc4c5c95500a718068",
             "username": "user3"
         },
-        "description": "Alonso se ha recuperado de su lesión de costilla y volverá a correr dentro de una semana.",
-        "thumbnail": "http://motor.as.com/motor/imagenes/2016/04/03/formula_1/1459707103_213959_1459707210_noticia_grande.jpg"
+        "description": "Alonso se ha recuperado de su lesión de costilla y volverá a correr dentro de una semana."
     },
     {
         "topic": "formula1",
@@ -151,8 +149,7 @@
             "_id": "5704b7cc4c5c95500a718068",
             "username": "user3"
         },
-        "description": "Alonso se ha recuperado de su lesión de costilla y volverá a correr dentro de una semana.",
-        "thumbnail": "http://motor.as.com/motor/imagenes/2016/04/03/formula_1/1459707103_213959_1459707210_noticia_grande.jpg"
+        "description": "Alonso se ha recuperado de su lesión de costilla y volverá a correr dentro de una semana."
     }
     ]
 }

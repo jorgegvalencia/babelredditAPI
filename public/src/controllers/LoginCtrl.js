@@ -1,4 +1,4 @@
-angular.module("babelreddit").controller("LoginCtrl", function($scope, $location, APIclient, Session, paths) {
+angular.module("babelreddit").controller("LoginCtrl", function($scope, $location, $route, APIclient, Session, paths) {
     "ngInject";
 
     $scope.model = {
@@ -11,24 +11,10 @@ angular.module("babelreddit").controller("LoginCtrl", function($scope, $location
             .then(function(response) {
                 Session.create(response._id, response.username);
                 $scope.$emit("$currentUser");
+                $route.reload();
             })
             .catch(function(response) {
                 console.log(response);
             })
-    }
-
-    function autologin(user) {
-        APIclient.login({username: user})
-            .then(function(response) {
-                Session.create(response._id, response.username);
-                $scope.$emit("$currentUser");
-            })
-            .catch(function(response) {
- 				localStorage.removeItem('user');
-            })
-    }
-
-    if (localStorage.getItem('user') !== null) {
-        autologin(localStorage.getItem('user'));
     }
 })

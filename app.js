@@ -22,7 +22,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(expressSession({ name: 'session', secret: 'secret', resave: false, saveUninitialized: false, cookie: {maxAge: 30 * 1000, httpOnly: true }}));
+app.use(expressSession({ name: 'session', secret: 'secret', resave: false, saveUninitialized: true, cookie: {maxAge: 60 * 60 * 1000, httpOnly: true }}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/'+versionNumber, routes);
