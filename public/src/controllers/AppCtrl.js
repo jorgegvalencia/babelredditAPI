@@ -20,6 +20,7 @@ angular.module("babelreddit").controller("AppCtrl", function($scope, $location, 
         $scope.model.webtitle = controller.titles[$location.path()] || "404 Not Found";
         //getTopicData();
         autologin();
+        console.log("AppCtrl trying login")
         $anchorScroll();
     });
 
@@ -61,6 +62,6 @@ angular.module("babelreddit").controller("AppCtrl", function($scope, $location, 
     }
 
     // getTopicData();
-    autologin();
+    // autologin();
 
 })

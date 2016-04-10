@@ -1,0 +1,22 @@
+<li class="media post">
+    <div class="votes">
+        <span>{{::item.votes}}</span>
+        <br>
+        <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
+        <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
+    </div>
+    <div class="media-left">
+        <a href="#">
+            <img class="media-object" ng-src="{{::item.thumbnail}}" alt="..." width="64" height="64">
+        </a>
+    </div>
+    <div class="media-body small">
+        <h4 class="media-heading">
+                                        <a ng-href="{{::getPostTitleUrl(item)}}">
+                                            {{::item.title }}
+                                        </a>
+                                        <p class="small">/{{::item.topic}}</p>
+                                    </h4>
+        <a ng-href="#{{::getPostUrl(item)}}">Comentarios&nbsp<span class="badge">{{::item.ncomments}}</span></a> Creado por: {{::item.author.username }} - {{ item.creation_date | date:"dd/MM/yyyy" }}
+    </div>
+</li>

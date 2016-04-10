@@ -3,125 +3,14 @@
         <hr>
         <div class="col-xs-12">
             <div>
-                <textarea class="form-control" name="" id="" rows="10" cols="100"></textarea>
+                <textarea class="form-control" name="" id="" rows="10" cols="50" ng-model="model.text" style="max-width: 800px; max-height: 150px;"></textarea>
             </div>
-            <button id="send-comment" class="btn btn-default pull-left">Enviar comentario</button>
+            <button id="send-comment" class="btn btn-primary btn-sm pull-left" ng-click="model.text && sendComment()">Enviar comentario</button>
         </div>
     </div>
     <h3>Comentarios</h3>
     <hr>
     <div class="media-list">
-        <div class="media post">
-            <div class="votes">
-                <span>3272</span>
-                <br>
-                <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
-            </div>
-            <div class="media-body">
-                <p class="media-heading">user1&nbsp<span class="small">Hace 18 min</span></p>
-                <div class="comment">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo enim, tempora dicta fugit, deserunt aperiam? Aliquid explicabo placeat debitis. Voluptatum doloremque odio quia neque incidunt fugiat dolorum sapiente voluptates. Veniam ullam sed laboriosam a libero minus dignissimos nisi reprehenderit quasi dolores repellat sint distinctio tempora, provident, et expedita earum officiis quia animi vitae enim quisquam obcaecati ab. Sed obcaecati esse voluptatum reiciendis nemo, dolore rerum a consequuntur quod, laborum ad, non beatae est inventore dolorum porro nulla id exercitationem corporis culpa. Earum, consequatur, dignissimos. Natus, provident! Reiciendis perferendis qui temporibus dolore recusandae, ea, repellendus culpa perspiciatis voluptate blanditiis optio laudantium.
-                </div>
-                <br>
-                <p class="commands">
-                    <a class="small">Contestar</a>
-                </p>
-                <div class="row">
-                    <!-- ng-if="logged()" -->
-                    <div class="col-xs-12">
-                        <div>
-                            <textarea class="form-control" name="" id="" rows="5" cols="1"></textarea>
-                        </div>
-                        <button id="send-comment" class="btn btn-default btn-sm">Enviar comentario</button>
-                        <button id="send-comment" class="btn btn-default btn-sm">Cancelar</button>
-                    </div>
-                </div>
-                <div class="media post">
-                    <div class="votes">
-                        <span>3272</span>
-                        <br>
-                        <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                        <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
-                    </div>
-                    <div class="media-body">
-                        <p class="media-heading">user1&nbsp<span class="small">Hace 18 min</span></p>
-                        <div class="comment">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo enim, tempora dicta fugit, deserunt aperiam? Aliquid explicabo placeat debitis. Voluptatum doloremque odio quia neque incidunt fugiat dolorum sapiente voluptates. Veniam ullam sed laboriosam a libero minus dignissimos nisi reprehenderit quasi dolores repellat sint distinctio tempora, provident, et expedita earum officiis quia animi vitae enim quisquam obcaecati ab. Sed obcaecati esse voluptatum reiciendis nemo, dolore rerum a consequuntur quod, laborum ad, non beatae est inventore dolorum porro nulla id exercitationem corporis culpa. Earum, consequatur, dignissimos. Natus, provident! Reiciendis perferendis qui temporibus dolore recusandae, ea, repellendus culpa perspiciatis voluptate blanditiis optio laudantium.
-                        </div>
-                        <div class="media post">
-                            <div class="votes">
-                                <span>3272</span>
-                                <br>
-                                <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                                <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
-                            </div>
-                            <div class="media-body">
-                                <p class="media-heading">user1&nbsp<span class="small">Hace 18 min</span></p>
-                                <div class="comment">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo enim, tempora dicta fugit, deserunt aperiam? Aliquid explicabo placeat debitis. Voluptatum doloremque odio quia neque incidunt fugiat dolorum sapiente voluptates. Veniam ullam sed laboriosam a libero minus dignissimos nisi reprehenderit quasi dolores repellat sint distinctio tempora, provident, et expedita earum officiis quia animi vitae enim quisquam obcaecati ab. Sed obcaecati esse voluptatum reiciendis nemo, dolore rerum a consequuntur quod, laborum ad, non beatae est inventore dolorum porro nulla id exercitationem corporis culpa. Earum, consequatur, dignissimos. Natus, provident! Reiciendis perferendis qui temporibus dolore recusandae, ea, repellendus culpa perspiciatis voluptate blanditiis optio laudantium.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="media post">
-            <div class="votes">
-                <span>3272</span>
-                <br>
-                <a class="upvote"><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                <a class="downvote"><i class="glyphicon glyphicon-thumbs-down"></i></a>
-            </div>
-            <div class="media-body">
-                <p class="media-heading">user1&nbsp<span class="small">Hace 18 min</span></p>
-                <div class="comment">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo enim, tempora dicta fugit, deserunt aperiam? Aliquid explicabo placeat debitis. Voluptatum doloremque odio quia neque incidunt fugiat dolorum sapiente voluptates. Veniam ullam sed laboriosam a libero minus dignissimos nisi reprehenderit quasi dolores repellat sint distinctio tempora, provident, et expedita earum officiis quia animi vitae enim quisquam obcaecati ab. Sed obcaecati esse voluptatum reiciendis nemo, dolore rerum a consequuntur quod, laborum ad, non beatae est inventore dolorum porro nulla id exercitationem corporis culpa. Earum, consequatur, dignissimos. Natus, provident! Reiciendis perferendis qui temporibus dolore recusandae, ea, repellendus culpa perspiciatis voluptate blanditiis optio laudantium.
-                </div>
-                <div class="media post">
-                    <div class="votes">
-                        <span>3272</span>
-                        <br>
-                        <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                        <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
-                    </div>
-                    <div class="media-body">
-                        <p class="media-heading">user1&nbsp<span class="small">Hace 18 min</span></p>
-                        <div class="comment">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo enim, tempora dicta fugit, deserunt aperiam? Aliquid explicabo placeat debitis. Voluptatum doloremque odio quia neque incidunt fugiat dolorum sapiente voluptates. Veniam ullam sed laboriosam a libero minus dignissimos nisi reprehenderit quasi dolores repellat sint distinctio tempora, provident, et expedita earum officiis quia animi vitae enim quisquam obcaecati ab. Sed obcaecati esse voluptatum reiciendis nemo, dolore rerum a consequuntur quod, laborum ad, non beatae est inventore dolorum porro nulla id exercitationem corporis culpa. Earum, consequatur, dignissimos. Natus, provident! Reiciendis perferendis qui temporibus dolore recusandae, ea, repellendus culpa perspiciatis voluptate blanditiis optio laudantium.
-                        </div>
-                        <div class="media post">
-                            <div class="votes">
-                                <span>3272</span>
-                                <br>
-                                <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                                <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
-                            </div>
-                            <div class="media-body">
-                                <p class="media-heading">user1&nbsp<span class="small">Hace 18 min</span></p>
-                                <div class="comment">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo enim, tempora dicta fugit, deserunt aperiam? Aliquid explicabo placeat debitis. Voluptatum doloremque odio quia neque incidunt fugiat dolorum sapiente voluptates. Veniam ullam sed laboriosam a libero minus dignissimos nisi reprehenderit quasi dolores repellat sint distinctio tempora, provident, et expedita earum officiis quia animi vitae enim quisquam obcaecati ab. Sed obcaecati esse voluptatum reiciendis nemo, dolore rerum a consequuntur quod, laborum ad, non beatae est inventore dolorum porro nulla id exercitationem corporis culpa. Earum, consequatur, dignissimos. Natus, provident! Reiciendis perferendis qui temporibus dolore recusandae, ea, repellendus culpa perspiciatis voluptate blanditiis optio laudantium.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="media post">
-                    <div class="votes">
-                        <span>3272</span>
-                        <br>
-                        <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-                        <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
-                    </div>
-                    <div class="media-body">
-                        <p class="media-heading">user1&nbsp<span class="small">Hace 18 min</span></p>
-                        <div class="comment">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo enim, tempora dicta fugit, deserunt aperiam? Aliquid explicabo placeat debitis. Voluptatum doloremque odio quia neque incidunt fugiat dolorum sapiente voluptates. Veniam ullam sed laboriosam a libero minus dignissimos nisi reprehenderit quasi dolores repellat sint distinctio tempora, provident, et expedita earum officiis quia animi vitae enim quisquam obcaecati ab. Sed obcaecati esse voluptatum reiciendis nemo, dolore rerum a consequuntur quod, laborum ad, non beatae est inventore dolorum porro nulla id exercitationem corporis culpa. Earum, consequatur, dignissimos. Natus, provident! Reiciendis perferendis qui temporibus dolore recusandae, ea, repellendus culpa perspiciatis voluptate blanditiis optio laudantium.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <comment-item ng-repeat="item in comments" item="item" is-logged="isLogged()"></comment-item>
     </div>
 </div>

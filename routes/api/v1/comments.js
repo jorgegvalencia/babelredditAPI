@@ -50,7 +50,7 @@ router.post('/', auth(), function(req, res) {
             _id: req.body.author._id,
             username: req.body.author.username
         },
-        creation_date: Date().toISOString(),
+        creation_date: new Date().toISOString(),
         reference: req.body.reference,
         text: req.body.text
     };
@@ -116,7 +116,7 @@ router.put('/:commentid', auth(), function(req, res) {
         console.log("Autor username", commentdata.author.username || "");
         if (req.session.user === commentdata.author.username) {
             var fields = {
-                last_edit_date: Date().toISOString(),
+                last_edit_date: new Date().toISOString(),
             };
             if (req.body.hasOwnProperty("text")) {
                 fields.text = req.body.text;
