@@ -7,6 +7,8 @@ var validate = require('../../../lib/validate');
 var mongoose = require('mongoose');
 require('../../../model/comment');
 var Comment = mongoose.model('comment');
+require('../../../model/post');
+var Post = mongoose.model('post');
 
 router.get('/', function(req, res) {
     Comment.find({ post: req.params.postid }, function(err, comments) {
@@ -68,7 +70,14 @@ router.post('/', auth(), function(req, res) {
             reference: commentdata.reference,
             text: commentdata.text,
         }
-        res.status(201).json({ comment: newcomment });
+        Post.findOneAndUpdate({ _id: req.params.postid }, {$inc: { ncomments: 1 }}, function() {
+            if (err) {
+                return res.status(500).json({ error: err });
+            }
+            else{
+                return res.status(201).json({ comment: newcomment });
+            }
+        })
     });
 });
 

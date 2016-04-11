@@ -1,4 +1,4 @@
-angular.module("babelreddit").controller("PostCtrl", function($scope, $routeParams, APIclient, Topic, Session, paths) {
+angular.module("babelreddit").controller("PostCtrl", function($scope, $routeParams, $route, APIclient, Topic, Session, paths) {
     "ngInject";
 
     // scope init
@@ -17,20 +17,31 @@ angular.module("babelreddit").controller("PostCtrl", function($scope, $routePara
     console.log("PostCtrl params:", $routeParams);
 
     function loadComments() {
-    	var commentlist = [];
-    	APIclient.getCommentList($routeParams.topicid, $routeParams.postid)
-        .then(function(response) {
-            console.log("response",response);
-            commentlist = response.comments;
-            // build comments tree
-            
-
-            //$scope.comments = commentlist;
-            console.log("comments", $scope.comments);
-        })
-        .catch(function(response) {
-            console.log(response);
-        })
+        var commentlist = [];
+        var resultlist = [];
+        APIclient.getCommentList($routeParams.topicid, $routeParams.postid)
+            .then(function(response) {
+                console.log("response", response);
+                commentlist = response.comments;
+                // build comments tree
+                var map = {},
+                    node, roots = [];
+                for (var i = 0; i < commentlist.length; i += 1) {
+                    node = commentlist[i];
+                    node.children = [];
+                    map[node._id] = i; // use map to look-up the parents
+                    if (node.reference !== null) {
+                        commentlist[map[node.reference]].children.push(node);
+                    } else {
+                        roots.push(node);
+                    }
+                }
+                $scope.comments = roots;
+                console.log("Tree", $scope.comments);
+            })
+            .catch(function(response) {
+                console.log(response);
+            })
     }
 
     $scope.isLogged = function() {
@@ -51,6 +62,7 @@ angular.module("babelreddit").controller("PostCtrl", function($scope, $routePara
                 console.log(response);
                 console.log("Comentario enviado!");
                 $scope.model.text = null;
+                $route.reload();
             })
             .catch(function(response) {
                 console.log(response);

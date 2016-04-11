@@ -14,8 +14,8 @@ var commentSchema = mongoose.Schema({
     creation_date: { type: String }, // string en formato ISO de la fecha de creación
     last_edit_date: String, // string en formato ISO de la última fecha de creación
     text: String, // texto del comentario
-    upvotes: [String], // id de usuarios que han votado positivamente
-    downvotes: [String], // id de usuarios que han votado negativamente
+    upvotes: {type: [String], default: []}, // id de usuarios que han votado positivamente
+    downvotes: {type: [String], default: []}, // id de usuarios que han votado negativamente
     reference: { type: String, default: null } // id del comentario respuesta (si es null es referente al post)
 });
 

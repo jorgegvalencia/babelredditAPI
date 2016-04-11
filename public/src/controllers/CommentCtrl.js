@@ -1,4 +1,4 @@
-angular.module("babelreddit").controller("CommentCtrl", function($scope, $routeParams, Session, APIclient) {
+angular.module("babelreddit").controller("CommentCtrl", function($scope, $routeParams, $route, Session, APIclient) {
     "ngInject";
 
     $scope.reply = false;
@@ -26,6 +26,7 @@ angular.module("babelreddit").controller("CommentCtrl", function($scope, $routeP
                 console.log(response);
                 console.log("Comentario enviado!");
                 $scope.text = null;
+                $route.reload();
             })
             .catch(function(response) {
                 console.log(response);

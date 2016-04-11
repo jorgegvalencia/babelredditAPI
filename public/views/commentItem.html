@@ -2,8 +2,8 @@
     <div class="votes">
         <span>{{::model.votes}}</span>
         <br>
-        <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-        <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
+        <a><i class="glyphicon glyphicon-thumbs-up upvote"></i></a>
+        <a><i class="glyphicon glyphicon-thumbs-down downvote"></i></a>
     </div>
     <div class="media-body">
         <p class="media-heading">{{::model.author.username }}&nbsp<span class="small">{{::model.creation_date | date:"dd/MM/yyyy"}}</span></p>
@@ -27,5 +27,6 @@
                 </div>
             </div>
         </div>
+        <comment-item ng-repeat="item in model.children" item="item" is-logged="isLogged()"></comment-item>
     </div>
 </div>

@@ -14,8 +14,8 @@ var postSchema = mongoose.Schema({
     },
     creation_date: {type: String }, // string en formato ISO de la fecha de creación
     last_edit_date: String, // string en formato ISO de la última fecha de creación
-    upvotes: [String], // id de usuarios que han votado positivamente
-    downvotes: [String], // id de usuarios que han votado negativamente
+    upvotes: {type: [String], default: []}, // id de usuarios que han votado positivamente
+    downvotes: {type: [String], default: []}, // id de usuarios que han votado negativamente
     description: String, // descripcion inicial (opcional) del post
     link: String, // String de una URL externa, o uri del propio post
     thumbnail: {type: String, default: "dist/default_thumbnail.png"}, // uri local del fichero de la imagen (**)
