@@ -3,12 +3,12 @@
         <hr>
         <div class="col-xs-12">
             <div>
-                <textarea class="form-control" name="" id="" rows="10" cols="50" ng-model="model.text" style="max-width: 800px; max-height: 150px;"></textarea>
+                <textarea class="form-control" name="" id="" rows="10" cols="50" ng-model="model.text" ng-model-options="{ debounce: 500 }" style="max-width: 800px; height: 150px;"></textarea>
             </div>
-            <button id="send-comment" class="btn btn-primary btn-sm pull-left" ng-click="model.text && sendComment()">Enviar comentario</button>
+            <button id="send-comment" class="btn br-btn btn-sm pull-left" ng-disabled="model.text == null" ng-click="model.text && sendComment()">Enviar comentario</button>
         </div>
     </div>
-    <h3>Comentarios</h3>
+    <h3><i><img src="dist/icons/comment.png" width="32px" alt=""></i>&nbspComentarios</h3>
     <hr>
     <div class="media-list">
         <comment-item ng-repeat="item in comments" item="item" is-logged="isLogged()"></comment-item>

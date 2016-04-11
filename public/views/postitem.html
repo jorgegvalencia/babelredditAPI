@@ -2,8 +2,8 @@
     <div class="votes">
         <span>{{::item.votes}}</span>
         <br>
-        <a><i class="glyphicon glyphicon-thumbs-up"></i></a>
-        <a><i class="glyphicon glyphicon-thumbs-down"></i></a>
+        <a><i class="glyphicon glyphicon-thumbs-up upvote"></i></a>
+        <a><i class="glyphicon glyphicon-thumbs-down downvote"></i></a>
     </div>
     <div class="media-left">
         <a href="#">
@@ -12,11 +12,12 @@
     </div>
     <div class="media-body small">
         <h4 class="media-heading">
-                                        <a ng-href="{{::getPostTitleUrl(item)}}">
-                                            {{::item.title }}
-                                        </a>
-                                        <p class="small">/{{::item.topic}}</p>
-                                    </h4>
-        <a ng-href="#{{::getPostUrl(item)}}">Comentarios&nbsp<span class="badge">{{::item.ncomments}}</span></a> Creado por: {{::item.author.username }} - {{ item.creation_date | ago }}
+            <a ng-href="{{::getPostTitleUrl(item)}}" target="_blank">
+                </img>{{::item.title }}
+            </a>
+            <p class="small">/{{::item.topic}}</p>
+        </h4>
+        <p>Creado por: <span class="author">{{::item.author.username }}</span> - Posted {{ item.creation_date | ago }}</p>
+        <a ng-href="#{{::getPostUrl(item)}}"><img src="dist/icons/comment.png" style="width: 18px">&nbspComentarios&nbsp<span class="badge">{{::item.ncomments}}</span></a> 
     </div>
 </li>

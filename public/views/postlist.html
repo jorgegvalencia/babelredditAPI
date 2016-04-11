@@ -1,7 +1,10 @@
 <div class="col-sm-8" ng-controller="PostListCtrl">
     <h3>
     /{{model.currentTopic.topic.abrev}}
-    <a href="#/topics/{{model.currentTopic.topic.abrev}}/newpost" class="btn btn-default btn-sm pull-right" ng-show="isLogged() && model.currentTopic.topic.abrev != 'all'">Crear post</a>
+    <a href="#/topics/{{model.currentTopic.topic.abrev}}/newpost" class="btn br-btn btn-sm pull-right" ng-show="isLogged() && model.currentTopic.topic.abrev != 'all'">
+        Crear post
+        <i><img src="dist/icons/newpost.png" width="18px" alt=""></i>
+    </a>
     </h3>
     <h4 ng-show="model.posts.length==0">Aún no hay ningún post. Sé el primero en <a href="#/topics/{{model.currentTopic.topic.abrev}}/newpost">crear uno.</a></h4>
     <ul class="media-list" ng-repeat="item in model.posts">

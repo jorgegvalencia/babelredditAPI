@@ -45,6 +45,16 @@ angular.module("babelreddit").controller("NewPostCtrl", function($scope, $routeP
             })
     }
 
+    $scope.submitPost = function () {
+        if($scope.postForm.$valid){
+            $scope.createPost();
+        }
+        else{
+            $scope.clearError();
+            $scope.setError();
+        }
+    }
+
     $scope.setError = function() {
         $scope.errorMessage = "Error al crear el post, por favor revisa el formulario. Recuerda que el título es obligatorio.";
         $timeout(function() {
@@ -58,6 +68,14 @@ angular.module("babelreddit").controller("NewPostCtrl", function($scope, $routeP
     $scope.clearError = function() {
         $scope.errorMessage = null;
         return false;
+    }
+
+    function clearFields() {
+        $scope.newpost.title = "";
+        $scope.newpost.description = "";
+        $scope.newpost.link = "";
+        $scope.newpost.thumbnail = "";
+        $scope.postForm.$setPristine();
     }
 
     $scope.$on("$currentUser", function() { //evt, value

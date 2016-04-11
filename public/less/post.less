@@ -1,50 +1,85 @@
 .post {
-    border: 1px solid #222;
+    border: 2px solid #222;
     padding: 15px;
-    background-color: black;
+    background-color: #2E3135;
+    text-shadow: 1px 2px 3px #222;
+    a {
+        color: aquamarine;
+    }
+    & .br-btn {
+        margin: 5px 0px;
+        background-color: lighten(#2E3135, 20%);
+        color: aquamarine;
+        &:hover {
+            color: #222;
+            background-color: #BBB;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+    & textarea {
+        box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+        resize: vertical;
+        width: 500px;
+        height: 100px;
+        max-width: 100%;
+        color: black;
+        background-color: #FFF !important;
+        font-size: 12px;
+    }
 }
 
 .votes {
     float: left;
     padding-right: 10px;
     display: inline;
-    .upvote{
+    .upvote {
         color: lightgreen;
-        &:hover{
+        &:hover {
             color: darken(lightgreen, 20%);
         }
     }
-    .downvote{
+    .downvote {
         color: tomato;
-        &:hover{
+        &:hover {
             color: darken(tomato, 20%);
         }
     }
 }
 
-.comment-panel {
-}
+.comment-panel {}
 
-textarea {
-        box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
-        resize: vertical;
-        width: 500px; 
-        height: 100px;
-        max-width: 100%;
-        color: black;
-        background-color: #777;
-        font-size: 12px;
-    }
+.author {
+    color: white;
+}
 
 button#send-comment {
     margin: 20px 0px;
+}
+
+.br-btn {
+    background-color: lighten(#2E3135, 20%);
+    color: aquamarine;
+    &:hover {
+        color: aquamarine;
+        background-color: #2E3135;
+    }
+    &:focus {
+        outline: none;
+    }
+}
+
+.reply-text {
+    margin: 10px 0px;
 }
 
 .media.post {
     color: #CCC;
 }
 
-.description {
+.description,
+{
     border: 1px solid #222;
     padding: 10px;
 }

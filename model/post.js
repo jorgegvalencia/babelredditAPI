@@ -18,7 +18,7 @@ var postSchema = mongoose.Schema({
     downvotes: {type: [String], default: []}, // id de usuarios que han votado negativamente
     description: String, // descripcion inicial (opcional) del post
     link: String, // String de una URL externa, o uri del propio post
-    thumbnail: {type: String, default: "dist/default_thumbnail.png"}, // uri local del fichero de la imagen (**)
+    thumbnail: {type: String, default: "dist/icons/default_thumbnail.png"}, // uri local del fichero de la imagen (**)
     ncomments: {type: Number, default: 0} // numero de comentarios
 });
 

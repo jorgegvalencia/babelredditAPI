@@ -9,6 +9,7 @@ angular.module("babelreddit").controller("PostCtrl", function($scope, $routePara
 
     $scope.post = {};
     $scope.comments = [];
+    $scope.errorMessage = null;
 
 
     var topicid = $routeParams.topicid;
@@ -48,6 +49,10 @@ angular.module("babelreddit").controller("PostCtrl", function($scope, $routePara
         return APIclient.isAuthenticated();
     }
 
+    $scope.setErrorMsg = function() {
+        $scope.errorMessage = "Escribe tu comentario!";
+    }
+
     $scope.sendComment = function() {
         var mycomment = {
             author: {
@@ -68,6 +73,13 @@ angular.module("babelreddit").controller("PostCtrl", function($scope, $routePara
                 console.log(response);
             })
     }
+
+    $scope.$watch('model.text', function () {
+        console.log("text",$scope.model.text);
+        if($scope.model.text == ""){
+            $scope.model.text = null;
+        }
+    })
 
     APIclient.getPost($routeParams.topicid, $routeParams.postid)
         .then(function(response) {

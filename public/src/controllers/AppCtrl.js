@@ -17,7 +17,7 @@ angular.module("babelreddit").controller("AppCtrl", function($scope, $location, 
     $scope.$on("$locationChangeSuccess", function(evt, currentRoute, prevRoute) {
         // console.log("Current route:", currentRoute);
         // console.log("Previous route:", prevRoute);
-        $scope.model.webtitle = controller.titles[$location.path()] || "404 Not Found";
+        $scope.model.webtitle = controller.titles[$location.path()] || "BabelReddit";
         //getTopicData();
         autologin();
         console.log("AppCtrl trying login")

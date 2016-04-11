@@ -17,7 +17,7 @@
                 <div class="alert alert-danger small text-center" ng-show="errorMessage!=null">
                     {{ errorMessage }}
                 </div>
-                <form role="form" name="postForm" class="form-horizontal" novalidate ng-show="isLogged()" ng-submit="(postForm.$valid && createPost()) && clearError() || setError()">
+                <form role="form" name="postForm" class="form-horizontal" novalidate ng-show="isLogged()" ng-submit="submitPost()">
                     <div class="form-group">
                         <label class="control-label col-xs-4 col-sm-4 col-md-4 small" for="title">Título del post*</label>
                         <div class="col-xs-6 col-sm-6 col-md-6">
