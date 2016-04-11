@@ -1,7 +1,7 @@
 <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
     <div class="media post">
         <div class="votes">
-            <span>{{post.votes}}</span>
+            <span>{{::post.votes}}</span>
             <br>
             <a><i class="glyphicon glyphicon-thumbs-up upvote"></i></a>
             <a><i class="glyphicon glyphicon-thumbs-down downvote"></i></a>
@@ -13,11 +13,12 @@
         </div>
         <div class="media-body">
             <h4 class="media-heading">
-                        <a href="{{post.link}}" target="_blank">{{ post.title }}</a>
+                        <a href="{{post.link}}" target="_blank">{{::post.title }}</a>
+                        <button class="btn br-btn btn-sm pull-right" ng-show="isAuthor()" ng-click>Edit post</button>
             </h4>
-            <p class="small">Creado por {{ post.author.username }} - {{ post.creation_date | ago }}</p>
+            <p class="small">Created by [{{::post.author.username }}] - {{::post.creation_date | ago }}</p>
             <div class="description">
-                {{ post.description }}
+                {{::post.description }}
             </div>
         </div>
     </div>

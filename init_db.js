@@ -53,7 +53,19 @@ function setDatabasePosts() {
                 var posts = JSON.parse(data);
                 async.eachSeries(posts.rows,
                     function(item, next) {
-                        var post = new Post(item);
+                        var params = {
+                            topic: item.topic, // required
+                            title: item.title, // required
+                            author: {
+                                _id: "57040f9dfff264bc07c294a3", // required
+                                username: "user1" // required
+                            },
+                            creation_date: new Date().toISOString(),
+                            description: item.description || null,
+                            link: item.link || undefined,
+                            thumbnail: item.thumbnail || undefined
+                        };
+                        var post = new Post(params);
                         post.save(function(err) {
                             console.log("Post saved");
                             next();

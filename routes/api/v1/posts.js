@@ -15,7 +15,7 @@ router.get('/', function(req, res) {
     if(req.params.topicid != "all"){
         topic.topic = req.params.topicid;
     }
-    Post.find(topic, function(err, posts) {
+    Post.find(topic).sort({creation_date: -1}).exec(function(err, posts) {
         if (err) {
             return res.status(500).json({ error: err });
         }

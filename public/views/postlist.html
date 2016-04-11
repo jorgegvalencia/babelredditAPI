@@ -2,11 +2,11 @@
     <h3>
     /{{model.currentTopic.topic.abrev}}
     <a href="#/topics/{{model.currentTopic.topic.abrev}}/newpost" class="btn br-btn btn-sm pull-right" ng-show="isLogged() && model.currentTopic.topic.abrev != 'all'">
-        Crear post
+        Create post
         <i><img src="dist/icons/newpost.png" width="18px" alt=""></i>
     </a>
     </h3>
-    <h4 ng-show="model.posts.length==0">Aún no hay ningún post. Sé el primero en <a href="#/topics/{{model.currentTopic.topic.abrev}}/newpost">crear uno.</a></h4>
+    <h4 ng-show="model.posts.length==0">There are no posts yet :( . Be the first at <a href="#/topics/{{model.currentTopic.topic.abrev}}/newpost">creating one.</a></h4>
     <ul class="media-list" ng-repeat="item in model.posts">
         <!-- Crear directiva postItem -->
         <div ng-include="'views/postitem.html'"></div>

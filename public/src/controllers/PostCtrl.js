@@ -49,6 +49,11 @@ angular.module("babelreddit").controller("PostCtrl", function($scope, $routePara
         return APIclient.isAuthenticated();
     }
 
+    $scope.isAuthor = function () {
+        console.log(Session.userid);
+        return $scope.post.author.username == Session.username;
+    }
+
     $scope.setErrorMsg = function() {
         $scope.errorMessage = "Escribe tu comentario!";
     }

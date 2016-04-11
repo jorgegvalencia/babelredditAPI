@@ -12,7 +12,7 @@ var Topic = mongoose.model('topic');
  * @api {GET} /topics Obtener la lista de topics
  */
 router.get('/', function(req, res) {
-    Topic.find({}, function(err, topics) {
+    Topic.find({}).sort({abrev: 1}).exec(function(err, topics) {
         if (err) {
             return res.status(500).json({ error: err });
         }
