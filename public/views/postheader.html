@@ -15,7 +15,7 @@
             <h4 class="media-heading">
                         <a href="{{post.link}}">{{ post.title }}</a>
             </h4>
-            <p class="small">Creado por {{ post.author.username }} - {{ post.creation_date | date:"dd/MM/yyyy" }}</p>
+            <p class="small">Creado por {{ post.author.username }} - {{ post.creation_date | ago }}</p>
             <div class="description">
                 {{ post.description }}
             </div>

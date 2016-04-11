@@ -17,6 +17,6 @@
                                         </a>
                                         <p class="small">/{{::item.topic}}</p>
                                     </h4>
-        <a ng-href="#{{::getPostUrl(item)}}">Comentarios&nbsp<span class="badge">{{::item.ncomments}}</span></a> Creado por: {{::item.author.username }} - {{ item.creation_date | date:"dd/MM/yyyy" }}
+        <a ng-href="#{{::getPostUrl(item)}}">Comentarios&nbsp<span class="badge">{{::item.ncomments}}</span></a> Creado por: {{::item.author.username }} - {{ item.creation_date | ago }}
     </div>
 </li>

@@ -6,7 +6,7 @@
         <a><i class="glyphicon glyphicon-thumbs-down downvote"></i></a>
     </div>
     <div class="media-body">
-        <p class="media-heading">{{::model.author.username }}&nbsp<span class="small">{{::model.creation_date | date:"dd/MM/yyyy"}}</span></p>
+        <p class="media-heading">{{::model.author.username }}&nbsp<span class="small">{{::model.creation_date | ago}}</span></p>
         <div class="comment">
             {{::model.text}}
         </div>
@@ -21,7 +21,6 @@
                     <div>
                         <textarea class="form-control" name="" id="" rows="5" cols="1" ng-model="text"></textarea>
                     </div>
-                    Reference: {{model._id | json}}
                     <button class="btn btn-primary btn-sm" ng-click="sendComment(model._id)">Enviar comentario</button>
                     <button class="btn btn-primary btn-sm" ng-click="reply = false">Cancelar</button>
                 </div>
