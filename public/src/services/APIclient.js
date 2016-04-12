@@ -13,6 +13,7 @@ angular.module("babelreddit").service("APIclient", function($http, $q, Session, 
     apiclient.getPost = getPost;
     apiclient.getCommentList = getCommentList;
     apiclient.createPost = createPost;
+    apiclient.deletePost = deletePost;
     apiclient.createComment = createComment;
 
     function login(credentials) {
@@ -169,6 +170,23 @@ angular.module("babelreddit").service("APIclient", function($http, $q, Session, 
         var requestURL = URL.resolve(apipaths.posts, { topicid: topicid });
         // Hacer trabajo asíncrono
         $http.post(requestURL, post)
+            .then(function(response) {
+                // Resolver la promesa
+                deferred.resolve(response.data);
+            })
+            .catch(function(response) {
+                // Rechazar la promesa
+                deferred.reject(response.data);
+            });
+        // Devolver la promesa
+        return deferred.promise;
+    }
+
+    function deletePost(topicid, postid) {
+        var deferred = $q.defer();
+        var requestURL = URL.resolve(apipaths.post, { topicid: topicid, postid: postid });
+        // Hacer trabajo asíncrono
+        $http.delete(requestURL)
             .then(function(response) {
                 // Resolver la promesa
                 deferred.resolve(response.data);

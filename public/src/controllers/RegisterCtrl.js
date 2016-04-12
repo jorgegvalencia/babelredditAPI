@@ -1,4 +1,4 @@
-angular.module("babelreddit").controller("RegisterCtrl", function($scope, APIclient) {
+angular.module("babelreddit").controller("RegisterCtrl", function($scope, $window, APIclient) {
     "ngInject";
 
     $scope.model = {
@@ -23,7 +23,13 @@ angular.module("babelreddit").controller("RegisterCtrl", function($scope, APIcli
             })
             .catch(function(response) {
                 if(response.error.code == 11000){
-                    $scope.errorMessage = "Error al crear el usuario, revisa tu nombre de usuario y contraseña.";
+                    if(response.error.errmsg.indefOf("babelreddit.users")){
+                        $window.alert("User already exist, try with another username.")
+                    }
+                    else{
+                        $window.alert("Email already registered. Please provide another one.")
+                    }
+                    $scope.errorMessage = "Error at creating the account. Please review your username and/or email.";
                 }
                 console.log(response);
             })

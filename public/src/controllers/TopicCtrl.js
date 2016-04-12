@@ -7,7 +7,5 @@ angular.module("babelreddit").controller("TopicCtrl", function($scope, $location
 
     // var locationTopic = $location.path().split("/")[2] || "all";
 
-    console.log("TopicCtrl topicid:", $routeParams);
-
     Topic.getTopicData($routeParams.topicid || "all");
 })

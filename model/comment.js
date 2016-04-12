@@ -16,7 +16,7 @@ var commentSchema = mongoose.Schema({
     text: String, // texto del comentario
     upvotes: {type: [String], default: []}, // id de usuarios que han votado positivamente
     downvotes: {type: [String], default: []}, // id de usuarios que han votado negativamente
-    reference: { type: String, default: null } // id del comentario respuesta (si es null es referente al post)
+    reference: {type: String, default: null }, // id del comentario respuesta (si es null es referente al post)
 });
 
 var Comment = mongoose.model('comment', commentSchema);

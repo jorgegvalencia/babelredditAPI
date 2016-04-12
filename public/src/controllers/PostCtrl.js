@@ -10,19 +10,17 @@ angular.module("babelreddit").controller("PostCtrl", function($scope, $routePara
     $scope.post = {};
     $scope.comments = [];
     $scope.errorMessage = null;
+    $scope.deleteSuccess = null;
 
 
     var topicid = $routeParams.topicid;
     var postid = $routeParams.postid;
-
-    console.log("PostCtrl params:", $routeParams);
 
     function loadComments() {
         var commentlist = [];
         var resultlist = [];
         APIclient.getCommentList($routeParams.topicid, $routeParams.postid)
             .then(function(response) {
-                console.log("response", response);
                 commentlist = response.comments;
                 // build comments tree
                 var map = {},
@@ -38,7 +36,6 @@ angular.module("babelreddit").controller("PostCtrl", function($scope, $routePara
                     }
                 }
                 $scope.comments = roots;
-                console.log("Tree", $scope.comments);
             })
             .catch(function(response) {
                 console.log(response);
@@ -49,9 +46,21 @@ angular.module("babelreddit").controller("PostCtrl", function($scope, $routePara
         return APIclient.isAuthenticated();
     }
 
-    $scope.isAuthor = function () {
-        console.log(Session.userid);
-        return $scope.post.author.username == Session.username;
+    $scope.isAuthor = function() {
+        if ($scope.post.author.username != undefined && Session != undefined) {
+            return $scope.post.author.username == Session.username;
+        } else
+            return false;
+    }
+
+    $scope.deletePost = function () {
+        APIclient.deletePost(topicid, postid)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (response) {
+                console.log(response);
+            });
     }
 
     $scope.setErrorMsg = function() {
@@ -79,16 +88,15 @@ angular.module("babelreddit").controller("PostCtrl", function($scope, $routePara
             })
     }
 
-    $scope.$watch('model.text', function () {
-        console.log("text",$scope.model.text);
-        if($scope.model.text == ""){
+    $scope.$watch('model.text', function() {
+        if ($scope.model.text == "") {
             $scope.model.text = null;
         }
     })
 
     APIclient.getPost($routeParams.topicid, $routeParams.postid)
         .then(function(response) {
-            console.log(response);
+            // console.log(response);
             $scope.post = response.post;
         })
         .catch(function(response) {

@@ -1,4 +1,4 @@
-angular.module("babelreddit").controller("LoginCtrl", function($scope, $location, $route, APIclient, Session, paths) {
+angular.module("babelreddit").controller("LoginCtrl", function($scope, $window, $location, $route, APIclient, Session, paths) {
     "ngInject";
 
     $scope.model = {
@@ -15,6 +15,7 @@ angular.module("babelreddit").controller("LoginCtrl", function($scope, $location
             })
             .catch(function(response) {
                 console.log(response);
+                $window.alert(response.error);
             })
     }
 })

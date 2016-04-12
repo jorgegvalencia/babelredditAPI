@@ -4,7 +4,7 @@
             <div class="col-xs-12 col-sm-8 col-md-8 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-lg-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h1>BabelReddit <small>Sign up form</small></h1>
+                        <h1><a href="#/">BabelReddit</a><small>&nbspSign up form</small></h1>
                     </div>
                     <div class="panel-body">
                         <div class="alert alert-success alert-dismissible small text-center" ng-show="successMessage" ng-bind-html="successMessage">
@@ -23,6 +23,9 @@
                                 <label class="control-label col-xs-4 col-sm-4 col-md-4 small" for="email">Email</label>
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address" ng-model="model.email">
+                                </div>
+                                <div class="text-danger small col-xs-4 col-xs-offset-4" ng-show="registerForm.email.$dirty && registerForm.email.$error.email">
+                                    Please provide a valid email.
                                 </div>
                             </div>
                             <div class="form-group">

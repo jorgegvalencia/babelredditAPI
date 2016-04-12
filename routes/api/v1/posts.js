@@ -12,10 +12,10 @@ var Post = mongoose.model('post');
 router.get('/', function(req, res) {
     var topic = {}
     console.log(req.params.topicid);
-    if(req.params.topicid != "all"){
+    if (req.params.topicid != "all") {
         topic.topic = req.params.topicid;
     }
-    Post.find(topic).sort({creation_date: -1}).exec(function(err, posts) {
+    Post.find(topic).sort({ creation_date: -1 }).exec(function(err, posts) {
         if (err) {
             return res.status(500).json({ error: err });
         }
@@ -172,6 +172,34 @@ router.put('/:postid', auth(), function(req, res) {
     })
 
 });
+
+router.delete('/:postid', auth(), function(req, res) {
+    Post.findOne({ '_id': req.params.postid }, function(err, postdata) {
+        if (err) {
+            return res.status(500).json({ error: err });
+        }
+        if (postdata === null) {
+            // el post no existe
+            return res.status(422).json({ error: "post does not exist" });
+        }
+        // si usuario logueado coincide con autor del post
+        console.log("Cookie username", req.session.user || "");
+        console.log("Autor username", postdata.author.username || "");
+        if (req.session.user === postdata.author.username) {
+            Post.remove({ _id: req.params.postid }, function(err) {
+                if (err) {
+                    return res.status(500).json({ error: err });
+                }
+                // editado correctamente
+                return res.status(200).json({ result: true });
+            })
+        } else {
+            // el usuario logueado no es el autor del post -> mandar forbidden        
+            res.status(403).json({ error: "you are not the author of this post" });
+        }
+
+    })
+})
 
 router.use('/:postid/comments', comments);
 
