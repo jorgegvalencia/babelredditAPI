@@ -46,22 +46,22 @@ angular.module("babelreddit").controller("PostCtrl", function($scope, $routePara
         return APIclient.isAuthenticated();
     }
 
-    $scope.isAuthor = function() {
-        if ($scope.post.author.username != undefined && Session != undefined) {
-            return $scope.post.author.username == Session.username;
-        } else
-            return false;
-    }
+    // $scope.isAuthor = function() {
+    //     if ($scope.post.author.username != undefined && Session != undefined) {
+    //         return $scope.post.author.username == Session.username;
+    //     } else
+    //         return false;
+    // }
 
-    $scope.deletePost = function () {
-        APIclient.deletePost(topicid, postid)
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (response) {
-                console.log(response);
-            });
-    }
+    // $scope.deletePost = function () {
+    //     APIclient.deletePost(topicid, postid)
+    //         .then(function (response) {
+    //             console.log(response);
+    //         })
+    //         .catch(function (response) {
+    //             console.log(response);
+    //         });
+    // }
 
     $scope.setErrorMsg = function() {
         $scope.errorMessage = "Escribe tu comentario!";

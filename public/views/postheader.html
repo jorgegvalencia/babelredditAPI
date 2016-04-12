@@ -14,7 +14,7 @@
         <div class="media-body">
             <h4 class="media-heading">
                         <a href="{{post.link}}" target="_blank">{{::post.title }}</a>
-                        <button class="btn br-btn btn-sm pull-right" ng-show="isAuthor()" ng-click="deletePost()">Delete post</button>
+                        <!-- <button class="btn br-btn btn-sm pull-right" ng-show="isAuthor()" ng-click="deletePost()">Delete post</button> -->
             </h4>
             <p class="small">Created by [{{::post.author.username }}] - {{::post.creation_date | ago }}</p>
             <div class="description">
