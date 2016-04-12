@@ -1,0 +1,44 @@
+{
+    "rows": [
+    {
+        "title": "All",
+        "abrev": "all", 
+        "description": "Welcome to BabelReddit",
+        "nsubs": 0,
+        "rules": "Reglas",
+        "cover": "dist/covers/all.jpg"
+    },
+    {
+        "title": "Formula 1",
+        "abrev": "formula1", 
+        "description": "Share and comment about anything related with the formula 1.",
+        "nsubs": 0,
+        "rules": "Reglas",
+        "cover": "dist/covers/formula1.jpg"
+    },
+    {
+        "title": "Football",
+        "abrev": "football", 
+        "description": "Football news. Last updates of major leagues (La Liga, Barclays Premier League, Bundesliga, Ligue 1, Calcio...) and international events (UEFA Champions League, World Cup, Copa América...) ",
+        "nsubs": 0,
+        "rules": "Reglas",
+        "cover": "dist/covers/football1.jpg"
+    },
+    {
+        "title": "World News",
+        "abrev": "worldnews",
+        "description": "News all around the world. Keep yourself updated with the last ocurring events.",
+        "nsubs": 0,
+        "rules": "Reglas",
+        "cover": "dist/covers/worldnews.jpg"
+    },
+    {
+        "title": "Web Development",
+        "abrev": "webdev",
+        "description": "Web development tips, methodologies and updates on latest technologies used to build a better web.",
+        "nsubs": 0,
+        "rules": "Reglas",
+        "cover": "dist/covers/webdev.jpg"
+    }
+    ]
+}

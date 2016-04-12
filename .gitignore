@@ -1,0 +1,9 @@
+# Node modules
+node_modules/
+
+# Bower components
+bower_components/
+
+# dist
+dist/app.js
+dist/style.css

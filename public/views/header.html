@@ -1,0 +1,9 @@
+<div class="container-fluid" ng-controller="HeaderCtrl">
+    <div class="row">
+        <div class="col-xs-12 col-lg-offset-1 col-lg-10 col-sm-offset-1 col-sm-10">
+            <h1 id="topic-title"><a href="#/topics/{{model.currentTopic.topic.abrev}}">{{ model.currentTopic.topic.title }}</a></h1>
+            <!-- <p ng-show="model.currentTopic.topic.nsubs>0"><small><span class="badge badge-success">{{ model.currentTopic.topic.nsubs}}</span></small>&nbspSuscriptores</p> -->
+            <p>{{ model.currentTopic.topic.description}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="media post">
+    <!-- <div class="votes">
+        <span>{{::model.votes}}</span>
+        <br>
+        <a><i class="glyphicon glyphicon-thumbs-up upvote"></i></a>
+        <a><i class="glyphicon glyphicon-thumbs-down downvote"></i></a>
+    </div> -->
+    <div class="media-body">
+        <p class="media-heading"><span class="username">[{{::model.author.username }}]</span><span class="small">&nbsp-&nbspCommented {{::model.creation_date | ago}}</span></p>
+        <div class="comment">
+            {{::model.text}}
+        </div>
+        <br>
+        <p class="commands">
+            <button class="btn br-btn btn-sm small" ng-click="toggleReply()" ng-show="isLogged() && reply == false"><i><img src="dist/icons/reply.png" width="18px" alt=""></i>&nbspContestar</button>
+        </p>
+        <div class="reply" ng-show="reply">
+            <div class="row">
+                <!-- ng-if="logged()" -->
+                <div class="col-xs-12">
+                    <div class="reply-text">
+                        <textarea class="form-control" name="" id="" rows="5" cols="1" ng-model="text" style="max-width: 800px; height: 150px;"></textarea>
+                    </div>
+                    <button class="btn br-btn btn-sm" ng-click="sendComment(model._id)">Enviar comentario</button>
+                    <button class="btn br-btn btn-sm" ng-click="reply = false">Cancelar</button>
+                </div>
+            </div>
+        </div>
+        <comment-item ng-repeat="item in model.children" item="item" is-logged="isLogged()"></comment-item>
+    </div>
+</div>
